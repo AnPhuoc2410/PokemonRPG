@@ -1022,7 +1022,43 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      potion_tileset_0: 149497545074640929
+      potion_tileset_1: 2099718416087951911
+      potion_tileset_10: 1858786021459822849
+      potion_tileset_11: 8769945195372071822
+      potion_tileset_12: -137334465160226636
+      potion_tileset_13: -6090256331845058582
+      potion_tileset_14: 8137539905131504430
+      potion_tileset_15: 3057794363970017049
+      potion_tileset_16: -5349109878154004307
+      potion_tileset_17: -2809395180699245539
+      potion_tileset_18: 8516207914135374630
+      potion_tileset_19: 2179193746420657447
+      potion_tileset_2: 5694542033784922947
+      potion_tileset_20: -4384976224852428516
+      potion_tileset_21: 3167248205646508844
+      potion_tileset_22: 1934063365737554552
+      potion_tileset_23: 2954265147668185811
+      potion_tileset_24: -2231099558207382773
+      potion_tileset_25: -4781595282565179338
+      potion_tileset_26: 4402480795973294674
+      potion_tileset_27: 6672216462443431532
+      potion_tileset_28: 416604435042823023
+      potion_tileset_29: 7415438016912056806
+      potion_tileset_3: 6934933687277767597
+      potion_tileset_30: -3083689736160679655
+      potion_tileset_31: -2496218781736296493
+      potion_tileset_32: 569595511855677314
+      potion_tileset_33: -6977069912215472336
+      potion_tileset_34: -9065344623459322139
+      potion_tileset_35: -4926884252506148401
+      potion_tileset_4: 2187033664556446688
+      potion_tileset_5: 5297410382422992106
+      potion_tileset_6: -1130307063785972239
+      potion_tileset_7: 8724728256399721647
+      potion_tileset_8: -159569899486493817
+      potion_tileset_9: 1539470538373338503
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

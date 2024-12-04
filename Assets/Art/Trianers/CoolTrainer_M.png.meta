@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CoolTrainer_M_0: -6815444706308093326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

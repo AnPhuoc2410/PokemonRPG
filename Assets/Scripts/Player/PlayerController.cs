@@ -1,52 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
-    private bool isMoving;
-    private Vector2 input;
-    public AudioSource stepSound;
-    private Animator animator;
+    public float moveSpeed; // Movement speed
+    private bool isMoving;  // Whether the player is currently moving
+    private Vector2 input;  // Input vector for movement
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-    public LayerMask obstacleLayer;
-
-    bool IsWalkable(Vector3 targetPos)
-    {
-        return !Physics2D.OverlapCircle(targetPos, 0.1f, obstacleLayer);
-    }
+    public AudioSource footstepSound; // Footstep sound source
 
     private void Update()
     {
+        // Prevent overlapping movement
         if (!isMoving)
         {
+            // Get horizontal and vertical input
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
+            // Prevent diagonal movement
             if (input.x != 0) input.y = 0;
 
-            // Update Animator parameters
-            animator.SetFloat("MoveX", input.x);
-            animator.SetFloat("MoveY", input.y);
-            animator.SetBool("IsWalking", input != Vector2.zero);
-
+            // Check for movement input
             if (input != Vector2.zero)
             {
+                // Determine the target position
                 var targetPos = transform.position + new Vector3(input.x, input.y);
-                if (IsWalkable(targetPos))
+
+                // Start moving towards the target position
+                StartCoroutine(Move(targetPos));
+
+                // Start playing footstep sound if not already playing
+                if (!footstepSound.isPlaying)
                 {
-                    StartCoroutine(Move(targetPos));
+                    footstepSound.Play();
                 }
             }
-
             else
             {
-                animator.SetBool("IsWalking", false);
+                // Stop footstep sound if player is not moving
+                if (footstepSound.isPlaying)
+                {
+                    footstepSound.Stop();
+                }
             }
         }
     }
@@ -55,27 +51,16 @@ public class PlayerController : MonoBehaviour
     {
         isMoving = true;
 
+        // Move the player towards the target position
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            // Move player towards the target position
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-
-            // Play step sound at intervals
-            if (!stepSound.isPlaying)
-            {
-                stepSound.Play();
-                yield return new WaitForSeconds(0.3f); // Adjust interval to match step rhythm
-            }
-            else
-            {
-                yield return null;
-            }
+            yield return null;
         }
 
+        // Snap to the target position
         transform.position = targetPos;
+
         isMoving = false;
-
-        animator.SetBool("IsWalking", false);
     }
-
 }
