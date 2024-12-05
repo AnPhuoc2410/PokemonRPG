@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 640952501}
   - component: {fileID: 640952500}
   - component: {fileID: 640952502}
+  - component: {fileID: 640952503}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -359,6 +360,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   footstepSound: {fileID: 847947087}
+--- !u!95 &640952503
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640952499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7155cfcacf46dfd46b5f727874cf17b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &847947086
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +411,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bfa61bc05c301eb45b11231e3b316ea8, type: 3}
   m_Resource: {fileID: 8300000, guid: bfa61bc05c301eb45b11231e3b316ea8, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

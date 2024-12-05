@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed; // Movement speed
-    private bool isMoving;  // Whether the player is currently moving
-    private Vector2 input;  // Input vector for movement
+    public float moveSpeed;
+    private bool isMoving;  
+    private Vector2 input; 
 
-    public AudioSource footstepSound; // Footstep sound source
+    private Animator animator;
 
+    public AudioSource footstepSound;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void Update()
     {
         // Prevent overlapping movement
@@ -24,6 +30,8 @@ public class PlayerController : MonoBehaviour
             // Check for movement input
             if (input != Vector2.zero)
             {
+                animator.SetFloat("moveX", input.x);
+                animator.SetFloat("moveY", input.y);
                 // Determine the target position
                 var targetPos = transform.position + new Vector3(input.x, input.y);
 
@@ -45,20 +53,21 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        animator.SetBool("isMoving", isMoving);
     }
 
     IEnumerator Move(Vector3 targetPos)
     {
         isMoving = true;
 
-        // Move the player towards the target position
+        
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
-        // Snap to the target position
+   
         transform.position = targetPos;
 
         isMoving = false;
