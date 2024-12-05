@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    public LayerMask solidObjectsLayer;
     private bool isMoving;  
     private Vector2 input; 
 
@@ -35,9 +36,12 @@ public class PlayerController : MonoBehaviour
                 // Determine the target position
                 var targetPos = transform.position + new Vector3(input.x, input.y);
 
-                // Start moving towards the target position
-                StartCoroutine(Move(targetPos));
-
+                if (IsWalkable(targetPos))
+                {
+                    // Start moving towards the target position
+                    StartCoroutine(Move(targetPos));
+                }
+             
                 // Start playing footstep sound if not already playing
                 if (!footstepSound.isPlaying)
                 {
@@ -71,5 +75,13 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+    }
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        if (Physics2D.OverlapCircle(targetPos, 0.1f, solidObjectsLayer))
+        {
+            return false;
+        }
+        return true;
     }
 }
