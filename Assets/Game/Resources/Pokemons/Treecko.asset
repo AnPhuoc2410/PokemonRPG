@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68eecabafd398d44bdc46af4d2a7738, type: 3}
-  m_Name: Pikachu
+  m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
+  m_Name: Treecko
   m_EditorClassIdentifier: 
-  pokemonName: Pikachu
+  Pokename: 
   description: 
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
