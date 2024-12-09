@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
   m_Name: Froakie
   m_EditorClassIdentifier: 
-  Pokename: 
+  Pokename: Froakie
   description: It secretes flexible bubbles from its chest and back. The bubbles
     reduce the damage it would otherwise take when attacked.
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  type1: 0
+  frontSprite: {fileID: -4031662098638557806, guid: 9befbb9e02e5e9a40ba5b0f99561cd75, type: 3}
+  backSprite: {fileID: -4031662098638557806, guid: 34ed20a083a9ea344a8225fb86ce311a, type: 3}
+  type1: 3
   type2: 0
-  maxHP: 0
-  attack: 0
-  defense: 0
-  spAttack: 0
-  spDefense: 0
-  speed: 0
+  maxHP: 41
+  attack: 56
+  defense: 40
+  spAttack: 62
+  spDefense: 44
+  speed: 71

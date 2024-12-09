@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
   m_Name: Pikachu
   m_EditorClassIdentifier: 
-  Pokename: 
-  description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  type1: 0
+  Pokename: Pikachu
+  description: "Mouse Pok\xE9mon"
+  frontSprite: {fileID: 6894999169920593895, guid: 183202ef74966a043b5448fcea16151b, type: 3}
+  backSprite: {fileID: 6894999169920593895, guid: 807663373f72ae446a0dabdb8f77b0ef, type: 3}
+  type1: 4
   type2: 0
-  maxHP: 0
-  attack: 0
-  defense: 0
-  spAttack: 0
-  spDefense: 0
-  speed: 0
+  maxHP: 35
+  attack: 55
+  defense: 40
+  spAttack: 50
+  spDefense: 50
+  speed: 90

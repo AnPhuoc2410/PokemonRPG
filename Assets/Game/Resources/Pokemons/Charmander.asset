@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
   m_Name: Charmander
   m_EditorClassIdentifier: 
-  Pokename: 
-  description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  type1: 0
+  Pokename: Charmander
+  description: It has a preference for hot things. When it rains, steam is said to
+    spout from the tip of its tail.
+  frontSprite: {fileID: 21300000, guid: cd259d9d4f8ba2749a16d1cc64d46bec, type: 3}
+  backSprite: {fileID: 21300000, guid: ed8e1d9976a1fd94d961840d8f6e7764, type: 3}
+  type1: 2
   type2: 0
-  maxHP: 0
-  attack: 0
-  defense: 0
-  spAttack: 0
-  spDefense: 0
-  speed: 0
+  maxHP: 39
+  attack: 52
+  defense: 43
+  spAttack: 60
+  spDefense: 50
+  speed: 65

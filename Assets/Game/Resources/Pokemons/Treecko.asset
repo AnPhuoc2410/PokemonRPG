@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Treecko
   m_EditorClassIdentifier: 
   Pokename: 
-  description: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  type1: 0
+  description: "Treecko has small hooks on the bottom of its feet that enable it
+    to scale vertical walls. This Pok\xE9mon attacks by slamming foes with its thick
+    tail."
+  frontSprite: {fileID: -3467783155421583807, guid: d9f496f9bffb7bf4ebcc0ec6c95a0497, type: 3}
+  backSprite: {fileID: -3467783155421583807, guid: 90ffdada806a0744bba29ab5bad6e591, type: 3}
+  type1: 5
   type2: 0
-  maxHP: 0
-  attack: 0
-  defense: 0
-  spAttack: 0
-  spDefense: 0
-  speed: 0
+  maxHP: 40
+  attack: 45
+  defense: 35
+  spAttack: 65
+  spDefense: 55
+  speed: 70
