@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
   m_Name: Fire Fang
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Fire Fang
   _description: 
-  _type: 0
-  _power: 0
-  _accuracy: 0
-  _pp: 0
+  _type: 2
+  _power: 65
+  _accuracy: 95
+  _pp: 15

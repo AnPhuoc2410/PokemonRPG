@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
   m_Name: Assurance
   m_EditorClassIdentifier: 
-  _name: 
+  _name: 'Assurance '
   _description: 
-  _type: 0
-  _power: 0
-  _accuracy: 0
-  _pp: 0
+  _type: 16
+  _power: 60
+  _accuracy: 100
+  _pp: 10
