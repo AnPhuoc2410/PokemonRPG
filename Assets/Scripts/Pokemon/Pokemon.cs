@@ -1,9 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Pokemon
 {
     private PokemonBase _base;
     private int _level;
+
+    public int HP { get; private set; }
+
+    public List<Move> Moves { get; set; }
 
     public PokemonBase Base => _base;
     public int Level => _level;
@@ -12,6 +17,17 @@ public class Pokemon
     {
         _base = pBase;
         _level = pLevel;
+        HP = MaxHP();
+
+        Moves = new List<Move>();
+        foreach (var move in _base.LearnableMoves)
+        {
+            if(move.Level <= _level)
+            {
+                Moves.Add(new Move(move.Base));
+                if (Moves.Count >= 4) break;
+            }
+        }
     }
 
     public int Attack()

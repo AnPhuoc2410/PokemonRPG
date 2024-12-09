@@ -20,6 +20,8 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
+    [SerializeField] LearnableMove[] learnableMoves;
+
     public string Name => Pokename;
     public string Description => description;
     public Sprite FrontSprite => frontSprite;
@@ -33,4 +35,14 @@ public class PokemonBase : ScriptableObject
     public int SpDefense => spDefense;
     public int Speed => speed;
 
+    public LearnableMove[] LearnableMoves => learnableMoves;
+}
+[System.Serializable]
+public class LearnableMove
+{
+    [SerializeField] MoveBase moveBase;
+    [SerializeField] int level;
+
+    public MoveBase Base => moveBase;
+    public int Level => level;
 }
