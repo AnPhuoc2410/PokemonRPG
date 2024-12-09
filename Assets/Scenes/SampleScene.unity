@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 14.800003, y: 0}
-  m_SizeDelta: {x: 41.04, y: 21.5}
+  m_AnchoredPosition: {x: 12.5, y: 0}
+  m_SizeDelta: {x: 16.040009, y: 21.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &43797080
 MonoBehaviour:
@@ -547,7 +547,6 @@ GameObject:
   - component: {fileID: 433123891}
   - component: {fileID: 433123893}
   - component: {fileID: 433123892}
-  - component: {fileID: 433123895}
   m_Layer: 0
   m_Name: BattleCamera
   m_TagString: Untagged
@@ -666,37 +665,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433123890}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.14, y: 1.28, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -25.478065, y: 2.0623033, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 538036390}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &433123895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433123890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_AssetsPPU: 100
-  m_RefResolutionX: 800
-  m_RefResolutionY: 600
-  m_CropFrame: 0
-  m_GridSnapping: 0
-  m_FilterMode: 0
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7557,6 +7532,7 @@ GameObject:
   - component: {fileID: 1543812031}
   - component: {fileID: 1543812033}
   - component: {fileID: 1543812032}
+  - component: {fileID: 1543812034}
   m_Layer: 0
   m_Name: HPBar
   m_TagString: Untagged
@@ -7624,6 +7600,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543812030}
   m_CullTransparentMesh: 1
+--- !u!114 &1543812034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543812030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8df56493d675e449c0d8517398dd75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 2083807469}
 --- !u!1 &1681314792
 GameObject:
   m_ObjectHideFlags: 0
