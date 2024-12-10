@@ -12,6 +12,7 @@ public class BattleSystem : MonoBehaviour
 
     BattleState state;
     int currentAction;
+    int currentMove;
 
     private void Start()
     {
@@ -25,6 +26,8 @@ public class BattleSystem : MonoBehaviour
         enemyUnit.Setup();
         playerHub.SetData(playerUnit.Pokemon);
         enemyHub.SetData(enemyUnit.Pokemon);
+
+        dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared!");
         yield return new WaitForSeconds(1f);
@@ -49,6 +52,9 @@ public class BattleSystem : MonoBehaviour
         if (state == BattleState.PlayerAction)
         {
             HandleActionSelection();
+        }else if (state == BattleState.PlayerMove)
+        {
+            HandleMoveSelection();
         }
     }
     private void HandleActionSelection()
@@ -101,6 +107,43 @@ public class BattleSystem : MonoBehaviour
             {
                 //Bag
             }
+        }
+    }
+    private void HandleMoveSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (currentMove < playerUnit.Pokemon.Moves.Count - 1)
+            {
+                currentMove++;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (currentMove > 0)
+            {
+                currentMove--;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (currentMove < playerUnit.Pokemon.Moves.Count - 2)
+            {
+                currentMove += 2;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (currentMove > 1)
+            {
+                currentMove -= 2;
+            }
+        }
+        dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            //Execute Move
         }
     }
 

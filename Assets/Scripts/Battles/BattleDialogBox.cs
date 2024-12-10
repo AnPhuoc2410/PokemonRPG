@@ -1,5 +1,6 @@
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +13,8 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
 
-    [SerializeField] Text[] actionTexts;
-    [SerializeField] Text[] moveTexts;
+    [SerializeField] List<Text> actionTexts;
+    [SerializeField] List<Text> moveTexts;
 
     [SerializeField] Text ppText;
     [SerializeField] Text typeText;
@@ -48,7 +49,7 @@ public class BattleDialogBox : MonoBehaviour
     } 
     public void UpdateActionSelection(int selectedAction)
     {
-        for (int i = 0; i < actionTexts.Length; i++)
+        for (int i = 0; i < actionTexts.Count; i++)
         {
             if (i == selectedAction)
             {
@@ -57,6 +58,36 @@ public class BattleDialogBox : MonoBehaviour
             else
             {
                 actionTexts[i].color = Color.black;
+            }
+        }
+    }
+    public void UpdateMoveSelection(int selectedMove, Move move)
+    {
+        for (int i = 0; i < moveTexts.Count; i++)
+        {
+            if (i == selectedMove)
+            {
+                moveTexts[i].color = Color.red;
+                ppText.text = $"PP {move.PP}/{move.Base.PP}";
+                typeText.text = move.Base.Type.ToString();
+            }
+            else
+            {
+                moveTexts[i].color = Color.black;
+            }
+        }
+    }
+    public void SetMoveNames(List<Move> moves)
+    {
+        for (int i = 0; i < moveTexts.Count; i++)
+        {
+            if (i < moves.Count)
+            {
+                moveTexts[i].text = moves[i].Base.Name;
+            }
+            else
+            {
+                moveTexts[i].text = "-";
             }
         }
     }
