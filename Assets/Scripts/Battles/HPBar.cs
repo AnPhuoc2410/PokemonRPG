@@ -3,9 +3,8 @@ using UnityEngine;
 public class HPBar : MonoBehaviour
 {
     [SerializeField] GameObject _healthBar;
-
-    private void Start()
+    public void SetHealth(float health)
     {
-        _healthBar.transform.localScale = new Vector3(0.5f, 0.5f);
+        _healthBar.transform.localScale = new Vector3(health, 1f, 1f);
     }
 }
