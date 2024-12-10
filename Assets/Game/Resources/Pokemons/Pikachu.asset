@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pokename: Pikachu
   description: "Mouse Pok\xE9mon"
-  frontSprite: {fileID: 6894999169920593895, guid: 183202ef74966a043b5448fcea16151b, type: 3}
-  backSprite: {fileID: 6894999169920593895, guid: 807663373f72ae446a0dabdb8f77b0ef, type: 3}
+  frontSprite: {fileID: 21300000, guid: 183202ef74966a043b5448fcea16151b, type: 3}
+  backSprite: {fileID: 21300000, guid: 807663373f72ae446a0dabdb8f77b0ef, type: 3}
   type1: 4
   type2: 0
   maxHP: 35

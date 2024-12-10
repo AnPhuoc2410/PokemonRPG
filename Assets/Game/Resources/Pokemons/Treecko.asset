@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
   m_Name: Treecko
   m_EditorClassIdentifier: 
-  Pokename: 
+  Pokename: Treecko
   description: "Treecko has small hooks on the bottom of its feet that enable it
     to scale vertical walls. This Pok\xE9mon attacks by slamming foes with its thick
     tail."
-  frontSprite: {fileID: -3467783155421583807, guid: d9f496f9bffb7bf4ebcc0ec6c95a0497, type: 3}
-  backSprite: {fileID: -3467783155421583807, guid: 90ffdada806a0744bba29ab5bad6e591, type: 3}
+  frontSprite: {fileID: 21300000, guid: d9f496f9bffb7bf4ebcc0ec6c95a0497, type: 3}
+  backSprite: {fileID: 21300000, guid: 90ffdada806a0744bba29ab5bad6e591, type: 3}
   type1: 5
   type2: 0
   maxHP: 40
