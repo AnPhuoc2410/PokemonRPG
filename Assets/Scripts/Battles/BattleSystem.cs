@@ -54,16 +54,48 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
 
         yield return new WaitForSeconds(1f);
+        bool isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        yield return enemyHub.UpdateHP();
 
-        //Enemy Move
+        if (isFainted)
+        {
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} fainted");
+            yield return new WaitForSeconds(1f);
+            //End Battle
+        }
+        else
+        {
+            StartCoroutine(EnemyMove());
+        }
+    }
+    private IEnumerator EnemyMove()
+    {
         state = BattleState.EnemyMove;
+        var move = enemyUnit.Pokemon.GetRandomMove();
+        yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.Name}");
+
+        yield return new WaitForSeconds(1f);
+        bool isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
+        yield return playerHub.UpdateHP();
+
+        if (isFainted)
+        {
+            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} fainted");
+            yield return new WaitForSeconds(1f);
+            //End Battle
+        }
+        else
+        {
+            PlayerAction();
+        }
     }
     private void Update()
     {
         if (state == BattleState.PlayerAction)
         {
             HandleActionSelection();
-        }else if (state == BattleState.PlayerMove)
+        }
+        else if (state == BattleState.PlayerMove)
         {
             HandleMoveSelection();
         }

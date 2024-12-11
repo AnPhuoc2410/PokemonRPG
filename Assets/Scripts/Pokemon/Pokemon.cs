@@ -41,9 +41,7 @@ public class Pokemon
 
     public bool TakeDamage(Move move, Pokemon attacker)
     {
-        float critical = 1f;
-        if (Random.value * 100 <= 6.25f)
-            critical = 1.5f;
+        float critical = Random.value <= 0.0625f ? 1.5f : 1f; // 6.25% chance for a critical hit
 
         // Calculate type effectiveness
         float typeEffectiveness = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) *
@@ -52,20 +50,18 @@ public class Pokemon
         // Calculate random modifier
         float modifier = critical * typeEffectiveness * Random.Range(0.85f, 1f);
 
-        // Determine attack stat based on move category
-        float attackStat = (move.Base.Category == MoveBase.MoveCategory.Physical) ? attacker.Attack : attacker.SpAttack;
+        // Calculate damage using the Attack stat of the attacker and Defense stat of the target
+        float damage = (((2 * attacker.Level / 5f + 2) * move.Base.Power * (attacker.Attack / (float)Defense)) / 50 + 2) * modifier;
 
-        // Determine defense stat based on move category
-        float defenseStat = (move.Base.Category == MoveBase.MoveCategory.Physical) ? this.Defense : this.SpDefense;
-
-        // Calculate damage
-        float damage = (((2 * attacker.Level / 5f + 2) * move.Base.Power * (attackStat / defenseStat)) / 50 + 2) * modifier;
-
-        // Apply damage and return if the Pokémon fainted
+        // Apply damage to HP
         HP -= Mathf.FloorToInt(damage);
         HP = Mathf.Clamp(HP, 0, MaxHP); // Ensure HP stays between 0 and MaxHP
 
-        return HP == 0; // Returns true if the Pokémon fainted
+        return HP == 0; // Return true if the Pokémon fainted
     }
-
+    public Move GetRandomMove()
+    {
+        int r = Random.Range(0, Moves.Count);
+        return Moves[r];
+    }
 }
