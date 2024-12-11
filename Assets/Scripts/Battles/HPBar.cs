@@ -9,7 +9,10 @@ public class HPBar : MonoBehaviour
     {
         _healthBar.transform.localScale = new Vector3(health, 1f, 1f);
     }
-
+    public float GetCurrentHealth()
+    {
+        return _healthBar.transform.localScale.x;
+    }
     public IEnumerator SetHealthSmooth(float newHP)
     {
         float currentHP = _healthBar.transform.localScale.x;

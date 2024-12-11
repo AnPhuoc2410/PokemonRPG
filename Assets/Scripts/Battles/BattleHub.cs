@@ -11,6 +11,7 @@ public class BattleHub : MonoBehaviour
     [SerializeField] Text hp;
 
     Pokemon _pokemon;
+
     public void SetData(Pokemon pokemon)
     {
         _pokemon = pokemon;
@@ -19,9 +20,38 @@ public class BattleHub : MonoBehaviour
         hp.text = pokemon.HP + "/" + pokemon.MaxHP;
         hpBar.SetHealth((float)pokemon.HP / pokemon.MaxHP);
     }
+
     public IEnumerator UpdateHP()
     {
-        yield return hpBar.SetHealthSmooth((float)_pokemon.HP / _pokemon.MaxHP);
-        yield return hp.text = _pokemon.HP + "/" + _pokemon.MaxHP;
+        float currentHP = _pokemon.HP;
+        float maxHP = _pokemon.MaxHP;
+
+        // Get the current displayed values for the bar and text
+        float startHP = float.Parse(hp.text.Split('/')[0]); // Extract current displayed HP
+        float startHealthBar = hpBar.GetCurrentHealth(); // New method in HPBar to get the current scale
+        float targetHealthBar = currentHP / maxHP;
+
+        float animationDuration = 0.5f; // Duration for both bar and text animation
+        float elapsedTime = 0f;
+
+        while (elapsedTime < animationDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / animationDuration;
+
+            // Interpolate bar scale and HP text
+            float interpolatedHealth = Mathf.Lerp(startHealthBar, targetHealthBar, t);
+            float interpolatedHP = Mathf.Lerp(startHP, currentHP, t);
+
+            // Update bar and text
+            hpBar.SetHealth(interpolatedHealth);
+            hp.text = Mathf.FloorToInt(interpolatedHP) + "/" + maxHP;
+
+            yield return null;
+        }
+
+        // Ensure final values are set
+        hpBar.SetHealth(targetHealthBar);
+        hp.text = currentHP + "/" + maxHP;
     }
 }
