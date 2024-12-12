@@ -18,3 +18,4 @@ MonoBehaviour:
   _power: 60
   _accuracy: 100
   _pp: 10
+  _category: 1

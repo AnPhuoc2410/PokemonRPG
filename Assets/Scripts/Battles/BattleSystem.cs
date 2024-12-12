@@ -51,11 +51,17 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.Busy;
         var move = playerUnit.Pokemon.Moves[currentMove];
+        move.PP--;
+        //Show Move
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
+        //Play Animation
         StartCoroutine(playerUnit.PlayAttackAnimation());
         StartCoroutine(enemyUnit.PlayHitAnimation());
+        //Calculate Damage
         var damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        //Update HP
         yield return enemyHub.UpdateHP();
+        //Show Damage 
         yield return ShowDamageDetails(damageDetails);
 
         if (damageDetails.Fainted)
@@ -76,10 +82,14 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.EnemyMove;
         var move = enemyUnit.Pokemon.GetRandomMove();
+        move.PP--;
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.Name}");
+
         StartCoroutine(enemyUnit.PlayAttackAnimation());
         StartCoroutine(playerUnit.PlayHitAnimation());
+
         var damageDetails = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
+
         yield return playerHub.UpdateHP();
         yield return ShowDamageDetails(damageDetails);
 

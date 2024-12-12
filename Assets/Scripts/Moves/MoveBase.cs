@@ -12,6 +12,7 @@ public class MoveBase : ScriptableObject
     [SerializeField] private int _power;
     [SerializeField] private int _accuracy;
     [SerializeField] private int _pp;
+    [SerializeField] private MoveCategory _category;
 
     public string Name => _name;
     public string Description => _description;
@@ -19,5 +20,5 @@ public class MoveBase : ScriptableObject
     public int Power => _power;
     public int Accuracy => _accuracy;
     public int PP => _pp;
-
+    public MoveCategory Category => _category;
 }
