@@ -47,12 +47,40 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
     }
+    private IEnumerator TryRun()
+    {
+        state = BattleState.Busy;
+
+        bool canRun = UnityEngine.Random.value < 0.5f;
+
+        if (canRun)
+        {
+            yield return dialogBox.TypeDialog("Got away safely");
+            OnBattleOver(true);
+        }
+        else
+        {
+            yield return dialogBox.TypeDialog("Can't escape");
+            state = BattleState.EnemyMove;
+            StartCoroutine(EnemyMove());
+
+        }
+    }
     private IEnumerator PerformPlayerMove()
     {
         state = BattleState.Busy;
         var move = playerUnit.Pokemon.Moves[currentMove];
+
+        //if (move.PP <= 0)
+        //{
+        //    yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name}'s {move.Base.Name} has no PP left!");
+        //    PlayerAction(); // Return to action selection
+        //    yield break;
+        //}
+
         move.PP--;
         //Show Move
+
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.Name}");
         //Play Animation
         StartCoroutine(playerUnit.PlayAttackAnimation());
@@ -178,7 +206,7 @@ public class BattleSystem : MonoBehaviour
             }
             else if (currentAction == 2)
             {
-                //Run
+                StartCoroutine(TryRun());
             }
             else if (currentAction == 3)
             {
@@ -220,6 +248,13 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            // Check if move has PP
+            if (playerUnit.Pokemon.Moves[currentMove].PP <= 0)
+            {
+                StartCoroutine(dialogBox.TypeDialog("No PP left for this move!"));
+                return;
+            }
+
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(PerformPlayerMove());
