@@ -13,16 +13,22 @@ public class BattleUnit : MonoBehaviour
 
     private RectTransform rectTransform;
     private Image image;
+    private Vector2 originPosition;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
+        originPosition = rectTransform.anchoredPosition;
     }
 
     public void Setup()
     {
         Pokemon = new Pokemon(_base, level);
+
+        // Reset to the original position
+        rectTransform.anchoredPosition = originPosition;
+        image.enabled = true; // Ensure the image is visible
 
         if (isPlayerUnit)
         {
@@ -34,7 +40,6 @@ public class BattleUnit : MonoBehaviour
             int random = Random.Range(1, 521);
             StartCoroutine(LoadSpriteFromURL($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{random}.png"));
         }
-
         StartCoroutine(PlayEntryAnimation());
     }
 
@@ -95,6 +100,7 @@ public class BattleUnit : MonoBehaviour
         }
 
         rectTransform.anchoredPosition = endPosition;
+        image.enabled = false; // Hide the image
     }
 
     public IEnumerator PlayAttackAnimation()

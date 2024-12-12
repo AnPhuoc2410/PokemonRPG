@@ -1,4 +1,4 @@
-using Assets.Scripts.Battles;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,11 +10,13 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHub enemyHub;
     [SerializeField] BattleDialogBox dialogBox;
 
+    public event Action<bool> OnBattleOver;
+
     BattleState state;
     int currentAction;
     int currentMove;
 
-    private void Start()
+    public void StartBattle()
     {
         StartCoroutine(SetupBattle());
     }
@@ -62,6 +64,8 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1f);
             StartCoroutine(enemyUnit.PlayFaintAnimation());
             //End Battle
+            yield return new WaitForSeconds(2f);
+            OnBattleOver(true);
         }
         else
         {
@@ -83,8 +87,10 @@ public class BattleSystem : MonoBehaviour
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} fainted");
             yield return new WaitForSeconds(1f);
-            StartCoroutine(playerUnit.PlayFaintAnimation());            
+            StartCoroutine(playerUnit.PlayFaintAnimation());
             //End Battle
+            yield return new WaitForSeconds(2f);
+            OnBattleOver(false);
         }
         else
         {
@@ -107,7 +113,7 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog("It's super effective");
         }
     }
-    private void Update()
+    public void HandleUpdate()
     {
         if (state == BattleState.PlayerAction)
         {
