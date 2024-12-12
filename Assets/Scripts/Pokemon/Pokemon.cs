@@ -39,13 +39,20 @@ public class Pokemon
     public int Speed => Mathf.FloorToInt(((_base.Speed * _level) / 100f) + 5);
     public int MaxHP =>  Mathf.FloorToInt(((_base.MaxHP * _level) / 100f) + 10);
 
-    public bool TakeDamage(Move move, Pokemon attacker)
+    public DamageDetail TakeDamage(Move move, Pokemon attacker)
     {
         float critical = Random.value <= 0.0625f ? 1.5f : 1f; // 6.25% chance for a critical hit
 
         // Calculate type effectiveness
         float typeEffectiveness = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) *
                                   TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type2);
+
+        DamageDetail detail = new DamageDetail()
+        {
+            TypeEffectiveness = typeEffectiveness,
+            Critical = critical,
+            Fainted = false
+        };
 
         // Calculate random modifier
         float modifier = critical * typeEffectiveness * Random.Range(0.85f, 1f);
@@ -57,7 +64,8 @@ public class Pokemon
         HP -= Mathf.FloorToInt(damage);
         HP = Mathf.Clamp(HP, 0, MaxHP); // Ensure HP stays between 0 and MaxHP
 
-        return HP == 0; // Return true if the Pokémon fainted
+        if (HP == 0) detail.Fainted = true;
+        return detail;
     }
     public Move GetRandomMove()
     {
