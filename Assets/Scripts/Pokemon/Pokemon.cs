@@ -1,19 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Pokemon
 {
-    private PokemonBase _base;
-    private int _level;
+    [SerializeField] private PokemonBase _base;
+    [SerializeField] private int _level;
 
     public int HP { get; private set; }
 
     public List<Move> Moves { get; set; }
 
-    public Pokemon(PokemonBase pBase, int pLevel)
+    public void Init()
     {
-        _base = pBase;
-        _level = pLevel;
         HP = MaxHP;
 
         //Generate Moves

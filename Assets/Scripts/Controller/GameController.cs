@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Camera worldCamera;
 
-    GameState gameState;
+    private GameState gameState;
+    private bool isBattleActive = false;
 
     private void Start()
     {
@@ -19,24 +20,41 @@ public class GameController : MonoBehaviour
 
     private void StartBattle()
     {
+        if (isBattleActive) return; // Prevent duplicate battles
+        isBattleActive = true;
+
+        Debug.Log("Transitioning to battle state...");
         gameState = GameState.Battle;
         battleController.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
-        battleController.StartBattle();
+
+        var playerParty = playerController.GetComponent<PokemonParty>();
+        var wildpokemon = FindFirstObjectByType<MapArea>().GetRandomWildPokemon();
+
+        if (playerParty.GetNotFaintedPokemon() == null)
+        {
+            Debug.LogError("No usable Pokémon! Returning to Pokémon Center...");
+            EndBattle(false);
+            return;
+        }
+
+        Debug.Log($"Starting battle against {wildpokemon.Base.Name}!");
+        battleController.StartBattle(playerParty, wildpokemon);
     }
+
     private void EndBattle(bool isWin)
     {
+        isBattleActive = false;
         gameState = GameState.FreeRoam;
         battleController.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
     }
 
-
     private void Update()
     {
-        if(gameState == GameState.FreeRoam)
+        if (gameState == GameState.FreeRoam)
         {
-           playerController.HandleUpdate();
+            playerController.HandleUpdate();
         }
         else if (gameState == GameState.Battle)
         {

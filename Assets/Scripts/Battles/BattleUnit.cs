@@ -5,8 +5,6 @@ using UnityEngine.Networking;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] PokemonBase _base;
-    [SerializeField] int level;
     [SerializeField] bool isPlayerUnit;
 
     public Pokemon Pokemon { get; set; }
@@ -22,9 +20,9 @@ public class BattleUnit : MonoBehaviour
         originPosition = rectTransform.anchoredPosition;
     }
 
-    public void Setup()
+    public void Setup(Pokemon pokemon)
     {
-        Pokemon = new Pokemon(_base, level);
+        Pokemon = pokemon;
 
         // Reset to the original position
         rectTransform.anchoredPosition = originPosition;
@@ -32,13 +30,15 @@ public class BattleUnit : MonoBehaviour
 
         if (isPlayerUnit)
         {
-            int random = Random.Range(1, 521);
-            StartCoroutine(LoadSpriteFromURL($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/{random}.png"));
+            image.sprite = Pokemon.Base.BackSprite;
+            //int random = Random.Range(1, 521);
+            //StartCoroutine(LoadSpriteFromURL($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/{random}.png"));
         }
         else
         {
-            int random = Random.Range(1, 521);
-            StartCoroutine(LoadSpriteFromURL($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{random}.png"));
+            image.sprite = Pokemon.Base.FrontSprite;
+            //int random = Random.Range(1, 521);
+            //StartCoroutine(LoadSpriteFromURL($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{random}.png"));
         }
         StartCoroutine(PlayEntryAnimation());
     }

@@ -323,8 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d4903b40da7104fbe6bfbd0eeb459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {fileID: 11400000, guid: d53ff34c2749bc04fa100c3cbff6e5a9, type: 2}
-  level: 5
   isPlayerUnit: 1
 --- !u!1 &229937705
 GameObject:
@@ -1911,6 +1909,7 @@ GameObject:
   - component: {fileID: 640952500}
   - component: {fileID: 640952502}
   - component: {fileID: 640952503}
+  - component: {fileID: 640952504}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2032,6 +2031,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &640952504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640952499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce4efaba52da1d4bab67df71a9f5a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemons:
+  - _base: {fileID: 11400000, guid: d53ff34c2749bc04fa100c3cbff6e5a9, type: 2}
+    _level: 7
+  - _base: {fileID: 11400000, guid: f3b58b047e6170c41b19adea87914d43, type: 2}
+    _level: 5
 --- !u!1 &847947086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,6 +2424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112432138}
   - component: {fileID: 1112432137}
+  - component: {fileID: 1112432139}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -2445,6 +2462,33 @@ Transform:
   - {fileID: 569733013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1112432139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112432136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c76a7479a9bde540b87cf5094924067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wildPokemons:
+  - _base: {fileID: 11400000, guid: d53ff34c2749bc04fa100c3cbff6e5a9, type: 2}
+    _level: 5
+  - _base: {fileID: 11400000, guid: f3b58b047e6170c41b19adea87914d43, type: 2}
+    _level: 5
+  - _base: {fileID: 11400000, guid: d27bb12c2dcd01a4f822f6fda9626e0e, type: 2}
+    _level: 5
+  - _base: {fileID: 11400000, guid: eaee9386f96e5fb4db092497b3075c76, type: 2}
+    _level: 5
+  - _base: {fileID: 11400000, guid: f3b58b047e6170c41b19adea87914d43, type: 2}
+    _level: 8
+  - _base: {fileID: 11400000, guid: eaee9386f96e5fb4db092497b3075c76, type: 2}
+    _level: 9
+  - _base: {fileID: 11400000, guid: d27bb12c2dcd01a4f822f6fda9626e0e, type: 2}
+    _level: 10
 --- !u!1 &1120705964
 GameObject:
   m_ObjectHideFlags: 0
@@ -7182,8 +7226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d4903b40da7104fbe6bfbd0eeb459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {fileID: 11400000, guid: eaee9386f96e5fb4db092497b3075c76, type: 2}
-  level: 5
   isPlayerUnit: 0
 --- !u!1 &1480931746
 GameObject:
