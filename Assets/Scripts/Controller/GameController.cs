@@ -15,6 +15,24 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        if (playerController == null)
+        {
+            Debug.LogError("PlayerController is not assigned in GameController");
+            return;
+        }
+
+        if (battleController == null)
+        {
+            Debug.LogError("BattleSystem is not assigned in GameController");
+            return;
+        }
+
+        if (worldCamera == null)
+        {
+            Debug.LogError("WorldCamera is not assigned in GameController");
+            return;
+        }
+
         playerController.OnEncountered += StartBattle;
         battleController.OnBattleOver += EndBattle;
     }
@@ -30,7 +48,20 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(false);
 
         var playerParty = playerController.GetComponent<PokemonParty>();
+        if (playerParty == null)
+        {
+            Debug.LogError("PlayerParty is not found on PlayerController");
+            EndBattle(false);
+            return;
+        }
+
         var wildpokemon = FindFirstObjectByType<MapArea>().GetRandomWildPokemon();
+        if (wildpokemon == null)
+        {
+            Debug.LogError("No wild Pokemon found");
+            EndBattle(false);
+            return;
+        }
 
         if (playerParty.GetNotFaintedPokemon() == null)
         {

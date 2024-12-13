@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
                 {
                     footstepSound.Stop();
                 }
-                OnEncountered?.Invoke();
+                OnEncountered();
             }
         }
     }

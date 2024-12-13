@@ -9,6 +9,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHub playerHub;
     [SerializeField] BattleHub enemyHub;
     [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] PartyScreen partyScreen;
 
     public event Action<bool> OnBattleOver;
 
@@ -34,6 +35,8 @@ public class BattleSystem : MonoBehaviour
         playerHub.SetData(playerUnit.Pokemon);
         enemyHub.SetData(enemyUnit.Pokemon);
 
+        partyScreen.Init();
+
         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared!");
@@ -54,7 +57,8 @@ public class BattleSystem : MonoBehaviour
     }
     private void OpenParty()
     {
-
+        partyScreen.SetPartyData(playerParty.Pokemons);
+        partyScreen.gameObject.SetActive(true);
     }
     private IEnumerator TryRun()
     {
