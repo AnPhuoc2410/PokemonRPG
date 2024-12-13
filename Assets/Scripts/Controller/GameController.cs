@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -38,7 +39,6 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Starting battle against {wildpokemon.Base.Name}!");
         battleController.StartBattle(playerParty, wildpokemon);
     }
 

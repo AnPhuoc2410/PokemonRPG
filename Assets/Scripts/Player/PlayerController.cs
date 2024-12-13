@@ -94,16 +94,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer))
         {
-            if (UnityEngine.Random.Range(1, 101) <= 10)
+            if (UnityEngine.Random.Range(1, 101) <= 50) // 10% chance for an encounter
             {
+                // Stop any movement
+                isMoving = false;
                 animator.SetBool("isMoving", false);
+
+                // Stop the footstep sound
                 if (footstepSound.isPlaying)
                 {
                     footstepSound.Stop();
                 }
-                OnEncountered();
+                OnEncountered?.Invoke();
             }
         }
     }
+
 }
 

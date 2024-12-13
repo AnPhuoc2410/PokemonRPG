@@ -42,7 +42,7 @@ public class BattleSystem : MonoBehaviour
     private void PlayerAction()
     {
         state = BattleState.PlayerAction;
-        StartCoroutine(dialogBox.TypeDialog("Choose an action"));
+        dialogBox.SetDialog("Choose an action");
         dialogBox.EnableActionSelector(true);
     }
     private void PLayerMove()
@@ -51,6 +51,10 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
+    }
+    private void OpenParty()
+    {
+
     }
     private IEnumerator TryRun()
     {
@@ -138,8 +142,9 @@ public class BattleSystem : MonoBehaviour
             {
                 playerUnit.Setup(nextPokemon);
                 playerHub.SetData(nextPokemon);
-                yield return dialogBox.TypeDialog($"Go {nextPokemon.Base.Name}");
+                dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
+                yield return dialogBox.TypeDialog($"Go {nextPokemon.Base.Name}");
                 PlayerAction();
             }
             else
@@ -181,34 +186,16 @@ public class BattleSystem : MonoBehaviour
     }
     private void HandleActionSelection()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (currentAction < 2)
-            {
-                currentAction += 2;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (currentAction >= 2)
-            {
-                currentAction -= 2;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (currentAction % 2 == 0)
-            {
-                currentAction += 1;
-            }
-        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++currentAction;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (currentAction % 2 == 1)
-            {
-                currentAction -= 1;
-            }
-        }
+            --currentAction;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            currentAction += 2;
+        else if(Input.GetKeyDown(KeyCode.UpArrow))
+            currentAction -= 2;
+
+        currentAction = Mathf.Clamp(currentAction, 0, 3);
         dialogBox.UpdateActionSelection(currentAction);
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -219,7 +206,7 @@ public class BattleSystem : MonoBehaviour
             }
             else if (currentAction == 1)
             {
-                //Pokemon
+                OpenParty();
             }
             else if (currentAction == 2)
             {
@@ -233,34 +220,17 @@ public class BattleSystem : MonoBehaviour
     }
     private void HandleMoveSelection()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (currentMove < playerUnit.Pokemon.Moves.Count - 1)
-            {
-                currentMove++;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (currentMove > 0)
-            {
-                currentMove--;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (currentMove < playerUnit.Pokemon.Moves.Count - 2)
-            {
-                currentMove += 2;
-            }
-        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++currentMove;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (currentMove > 1)
-            {
-                currentMove -= 2;
-            }
-        }
+            --currentMove;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            currentMove += 2;
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+            currentMove -= 2;
+
+        currentMove = Mathf.Clamp(currentMove, 0, playerUnit.Pokemon.Moves.Count - 1);
+
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -275,6 +245,13 @@ public class BattleSystem : MonoBehaviour
             dialogBox.EnableMoveSelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(PerformPlayerMove());
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            dialogBox.EnableMoveSelector(false);
+            dialogBox.EnableDialogText(true);
+            state = BattleState.PlayerAction;
+            PlayerAction();
         }
     }
 
