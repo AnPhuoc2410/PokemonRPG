@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +10,7 @@ public class PartyMember : MonoBehaviour
 
     [SerializeField] HPBar hpBar;
     [SerializeField] Text hp;
-
-    Pokemon _pokemon;
-    public void Awake()
-    {
-        imagePoke = GetComponent<Image>();
-    }
+    private Pokemon _pokemon;
 
     public void SetData(Pokemon pokemon)
     {
@@ -24,5 +20,17 @@ public class PartyMember : MonoBehaviour
         levelPoke.text = "Lvl " + pokemon.Level;
         hp.text = pokemon.HP + "/" + pokemon.MaxHP;
         hpBar.SetHealth((float)pokemon.HP / pokemon.MaxHP);
+    }
+
+    internal void SetSelected(bool selected)
+    {
+        if (selected)
+        {
+            namePoke.color = Color.red;
+        }
+        else
+        {
+            namePoke.color = Color.black;
+        }
     }
 }

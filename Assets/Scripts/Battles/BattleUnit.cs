@@ -174,6 +174,25 @@ public class BattleUnit : MonoBehaviour
 
         image.enabled = true; // Ensure visibility is restored
     }
+    public IEnumerator PlayReturnAnimation()
+    {
+        float duration = 1.0f;
+        Vector2 startPosition = rectTransform.anchoredPosition;
+        Vector2 endPosition = startPosition + new Vector2(500, 0);
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            t = EaseInOutQuad(t);
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rectTransform.anchoredPosition = endPosition;
+    }
 
     private float EaseInOutQuad(float t)
     {

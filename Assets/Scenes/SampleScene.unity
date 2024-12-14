@@ -374,8 +374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.0549927, y: 0}
+  m_SizeDelta: {x: 2.1101, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &94928581
 MonoBehaviour:
@@ -10220,6 +10220,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1477571648}
     m_Modifications:
+    - target: {fileID: 4146945835083685163, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f37bf3cf5680a64d863b5f155b2a597, type: 3}
+    - target: {fileID: 4146945835083685163, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146945835083685163, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146945835083685163, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146945835083685163, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5617928201801043441, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
       propertyPath: m_Name
       value: PartyMember

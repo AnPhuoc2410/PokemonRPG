@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Electro Ball
   _description: 
   _type: 4
-  _power: 0
+  _power: 70
   _accuracy: 100
   _pp: 10
   _category: 1

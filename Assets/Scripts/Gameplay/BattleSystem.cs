@@ -16,6 +16,7 @@ public class BattleSystem : MonoBehaviour
     private BattleState state;
     private int currentAction;
     private int currentMove;
+    private int currentPokemon;
 
     private PokemonParty playerParty;
     private Pokemon wildPokemon;
@@ -57,6 +58,7 @@ public class BattleSystem : MonoBehaviour
     }
     private void OpenParty()
     {
+        state = BattleState.PartyScreen;
         partyScreen.SetPartyData(playerParty.Pokemons);
         partyScreen.gameObject.SetActive(true);
     }
@@ -76,7 +78,6 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog("Can't escape");
             state = BattleState.EnemyMove;
             StartCoroutine(EnemyMove());
-
         }
     }
     private IEnumerator PerformPlayerMove()
@@ -142,14 +143,9 @@ public class BattleSystem : MonoBehaviour
             //End Battle
             yield return new WaitForSeconds(2f);
             Pokemon nextPokemon = playerParty.GetNotFaintedPokemon();
-            if(nextPokemon != null)
+            if (nextPokemon != null)
             {
-                playerUnit.Setup(nextPokemon);
-                playerHub.SetData(nextPokemon);
-                dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
-
-                yield return dialogBox.TypeDialog($"Go {nextPokemon.Base.Name}");
-                PlayerAction();
+                OpenParty();
             }
             else
             {
@@ -187,7 +183,70 @@ public class BattleSystem : MonoBehaviour
         {
             HandleMoveSelection();
         }
+        else if (state == BattleState.PartyScreen)
+        {
+            HandlePartySelection();
+        }
     }
+
+    private void HandlePartySelection()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++currentPokemon;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --currentPokemon;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            currentPokemon += 2;
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+            currentPokemon -= 2;
+
+        currentPokemon = Mathf.Clamp(currentPokemon, 0, playerParty.Pokemons.Count - 1);
+        partyScreen.UpdateSelectedMember(currentPokemon);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            var selectedMember = playerParty.Pokemons[currentPokemon];
+            if (selectedMember.HP <= 0)
+            {
+                partyScreen.SetMessageText("You can't send out a fainted Pokemon");
+                return;
+            }
+            if (selectedMember == playerUnit.Pokemon)
+            {
+                partyScreen.SetMessageText("You can't switch to the same Pokemon");
+                return;
+            }
+            partyScreen.gameObject.SetActive(false);
+            state = BattleState.Busy;
+            StartCoroutine(SwitchPokemon(selectedMember));
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            partyScreen.gameObject.SetActive(false);
+            dialogBox.EnableDialogText(true);
+            state = BattleState.PlayerAction;
+            PlayerAction();
+        }
+    }
+
+    private IEnumerator SwitchPokemon(Pokemon selectedMember)
+    {
+        if (playerUnit.Pokemon.HP > 0)
+        {
+            yield return dialogBox.TypeDialog($"Return {playerUnit.Pokemon.Base.Name}!");
+            playerUnit.PlayReturnAnimation();
+            yield return new WaitForSeconds(2f);
+        }
+
+        playerUnit.Setup(selectedMember);
+        playerHub.SetData(selectedMember);
+        dialogBox.SetMoveNames(selectedMember.Moves);
+
+        yield return dialogBox.TypeDialog($"Go {selectedMember.Base.Name}!");
+        playerUnit.PlayEntryAnimation();
+        StartCoroutine(EnemyMove());
+    }
+
     private void HandleActionSelection()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -196,7 +255,7 @@ public class BattleSystem : MonoBehaviour
             --currentAction;
         else if (Input.GetKeyDown(KeyCode.DownArrow))
             currentAction += 2;
-        else if(Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
             currentAction -= 2;
 
         currentAction = Mathf.Clamp(currentAction, 0, 3);
@@ -214,7 +273,7 @@ public class BattleSystem : MonoBehaviour
             }
             else if (currentAction == 2)
             {
-                StartCoroutine(TryRun());
+                TryRun();
             }
             else if (currentAction == 3)
             {
