@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerUnit: 1
+  hud: {fileID: 1361432309}
 --- !u!1 &94928578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,8 +1417,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnit: {fileID: 67929882}
   enemyUnit: {fileID: 1429296799}
-  playerHub: {fileID: 1361432309}
-  enemyHub: {fileID: 1522486400}
   dialogBox: {fileID: 394272936}
   partyScreen: {fileID: 94928579}
 --- !u!1 &569733012
@@ -1450,7 +1449,7 @@ Transform:
   m_GameObject: {fileID: 569733012}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.09, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7704,6 +7703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerUnit: 0
+  hud: {fileID: 1522486400}
 --- !u!1 &1477571647
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckForEncounter()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer))
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, grassLayer))
         {
             if (UnityEngine.Random.Range(1, 101) <= 50) // 10% chance for an encounter
             {

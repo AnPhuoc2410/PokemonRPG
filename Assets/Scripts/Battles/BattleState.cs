@@ -2,9 +2,9 @@
 public enum BattleState
 {
     Start,
-    PlayerAction,
-    PlayerMove,
-    EnemyMove,
+    ActionSelection,
+    MoveSelection,
+    PerformMove,
     Busy,
     PartyScreen,
     Bag,

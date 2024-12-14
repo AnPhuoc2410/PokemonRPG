@@ -6,8 +6,10 @@ using UnityEngine.Networking;
 public class BattleUnit : MonoBehaviour
 {
     [SerializeField] bool isPlayerUnit;
-
+    [SerializeField] BattleHub hud;
     public Pokemon Pokemon { get; set; }
+    public bool IsPlayerUnit => isPlayerUnit;
+    public BattleHub Hud => hud;
 
     private RectTransform rectTransform;
     private Image image;
@@ -40,6 +42,7 @@ public class BattleUnit : MonoBehaviour
             //int random = Random.Range(1, 521);
             //StartCoroutine(LoadSpriteFromURL($"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{random}.png"));
         }
+        hud.SetData(Pokemon);
         StartCoroutine(PlayEntryAnimation());
     }
 
@@ -178,7 +181,7 @@ public class BattleUnit : MonoBehaviour
     {
         float duration = 1.0f;
         Vector2 startPosition = rectTransform.anchoredPosition;
-        Vector2 endPosition = startPosition + new Vector2(500, 0);
+        Vector2 endPosition = startPosition + new Vector2(800, 0);
 
         float elapsed = 0f;
 
