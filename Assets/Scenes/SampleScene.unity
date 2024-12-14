@@ -493,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -669,7 +669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -250
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2340,6 +2340,10 @@ MonoBehaviour:
     _level: 7
   - _base: {fileID: 11400000, guid: f3b58b047e6170c41b19adea87914d43, type: 2}
     _level: 5
+  - _base: {fileID: 11400000, guid: eaee9386f96e5fb4db092497b3075c76, type: 2}
+    _level: 7
+  - _base: {fileID: 11400000, guid: d27bb12c2dcd01a4f822f6fda9626e0e, type: 2}
+    _level: 8
 --- !u!224 &748092624 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
@@ -7730,9 +7734,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 748092624}
-  - {fileID: 606195976}
   - {fileID: 1979211275}
   - {fileID: 1524720660}
+  - {fileID: 606195976}
   - {fileID: 1940022307}
   - {fileID: 1732882343}
   m_Father: {fileID: 94928580}
@@ -9612,7 +9616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -350
+      value: -250
       objectReference: {fileID: 0}
     - target: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

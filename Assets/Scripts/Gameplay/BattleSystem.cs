@@ -191,16 +191,20 @@ public class BattleSystem : MonoBehaviour
 
     private void HandlePartySelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++currentPokemon;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --currentPokemon;
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            currentPokemon += 2;
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            currentPokemon++;
+        }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-            currentPokemon -= 2;
+        {
+            currentPokemon--;
+        }
 
-        currentPokemon = Mathf.Clamp(currentPokemon, 0, playerParty.Pokemons.Count - 1);
+        if (currentPokemon < 0)
+            currentPokemon = playerParty.Pokemons.Count - 1; // Wrap to last Pokémon
+        else if (currentPokemon >= playerParty.Pokemons.Count)
+            currentPokemon = 0; // Wrap to first Pokémon
+
         partyScreen.UpdateSelectedMember(currentPokemon);
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -228,6 +232,7 @@ public class BattleSystem : MonoBehaviour
             PlayerAction();
         }
     }
+
 
     private IEnumerator SwitchPokemon(Pokemon selectedMember)
     {
@@ -273,7 +278,7 @@ public class BattleSystem : MonoBehaviour
             }
             else if (currentAction == 2)
             {
-                TryRun();
+                StartCoroutine(TryRun());
             }
             else if (currentAction == 3)
             {
