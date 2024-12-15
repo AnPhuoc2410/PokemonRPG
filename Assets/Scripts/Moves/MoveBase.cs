@@ -13,6 +13,8 @@ public class MoveBase : ScriptableObject
     [SerializeField] private int _accuracy;
     [SerializeField] private int _pp;
     [SerializeField] private MoveCategory _category;
+    [SerializeField] private MoveEffects _effects;
+    [SerializeField] private MoveTarget _target;
 
     public string Name => _name;
     public string Description => _description;
@@ -21,4 +23,6 @@ public class MoveBase : ScriptableObject
     public int Accuracy => _accuracy;
     public int PP => _pp;
     public MoveCategory Category => _category;
+    public MoveEffects Effects => _effects;
+    public MoveTarget Target => _target;
 }

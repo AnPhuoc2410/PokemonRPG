@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static PokemonData;
 
 [System.Serializable]
 public class Pokemon
@@ -13,6 +12,7 @@ public class Pokemon
 
     public List<Move> Moves { get; private set; }
     public Dictionary<Stat, int> Stats { get; private set; }
+    public Dictionary<Stat, int> StatBoosts { get; private set; }
 
     public IV IndividualValues { get; private set; }
     public EV EffortValues { get; private set; }
@@ -25,6 +25,7 @@ public class Pokemon
     public int SpAttack => GetStat(Stat.SpAttack);
     public int SpDefense => GetStat(Stat.SpDefense);
     public int Speed => GetStat(Stat.Speed);
+    public int Accuracy => GetStat(Stat.Accuracy);
 
     public void Init()
     {
@@ -33,6 +34,7 @@ public class Pokemon
         IndividualValues.Initialize();
         EffortValues = new EV();
         StatsInit();
+        StatBootsInit();
         HP = MaxHP;
     }
 
@@ -49,8 +51,21 @@ public class Pokemon
         }
         return moves;
     }
+    private void StatBootsInit()
+    {
+        StatBoosts = new Dictionary<Stat, int>
+        {
+            { Stat.Attack, 0 },
+            { Stat.Defense, 0 },
+            { Stat.SpAttack, 0 },
+            { Stat.SpDefense, 0 },
+            { Stat.Speed, 0 },
+            { Stat.Accuracy, 0 },
+            { Stat.Evasion, 0 }
+        };
+    }
 
-    private void StatsInit()
+        private void StatsInit()
     {
         Stats = new Dictionary<Stat, int>
         {
@@ -59,7 +74,8 @@ public class Pokemon
             { Stat.SpAttack, CalculateStat(_base.SpAttack, IndividualValues.SpAttack, EffortValues.SpAttack, _level) },
             { Stat.SpDefense, CalculateStat(_base.SpDefense, IndividualValues.SpDefense, EffortValues.SpDefense, _level) },
             { Stat.Speed, CalculateStat(_base.Speed, IndividualValues.Speed, EffortValues.Speed, _level) },
-            { Stat.HP, CalculateHPStat(_base.MaxHP, IndividualValues.HP, EffortValues.HP, _level) }
+            { Stat.HP, CalculateHPStat(_base.MaxHP, IndividualValues.HP, EffortValues.HP, _level) },
+            { Stat.Accuracy, 100 }
         };
         MaxHP = Stats[Stat.HP];
     }
@@ -76,11 +92,15 @@ public class Pokemon
 
     private int GetStat(Stat stat)
     {
-        if (Stats.ContainsKey(stat))
-        {
-            return Stats[stat];
-        }
-        return 0;
+        int statVal = Stats.ContainsKey(stat) ? Stats[stat] : 0;
+        int boosts = StatBoosts.ContainsKey(stat) ? StatBoosts[stat] : 0;
+        var boostTable = new float[] { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f, 5f };
+
+        if(boosts >= 0)
+            statVal = Mathf.FloorToInt(statVal * boostTable[boosts]);
+        else
+            statVal = Mathf.FloorToInt(statVal / boostTable[-boosts]);
+        return statVal;
     }
 
     public DamageDetail TakeDamage(Move move, Pokemon attacker)
