@@ -177,6 +177,10 @@ public class BattleSystem : MonoBehaviour
                 target.ApplyBoosts(effect.Boosts);
             }
         }
+        if(effect.Status != ConditionID.None)
+        {
+            target.SetStatus(effect.Status);
+        }
         yield return ShowStatusChanges(source);
         yield return ShowStatusChanges(target);
     }

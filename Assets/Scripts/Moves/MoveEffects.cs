@@ -5,8 +5,10 @@ using UnityEngine;
 public class MoveEffects
 {
     [SerializeField] private List<StatBoost> _boosts;
+    [SerializeField] private ConditionID status;
 
     public List<StatBoost> Boosts => _boosts;
+    public ConditionID Status => status;
 }
 
 [System.Serializable]

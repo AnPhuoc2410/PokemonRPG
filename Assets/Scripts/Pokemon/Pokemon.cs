@@ -16,6 +16,7 @@ public class Pokemon
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
     public IV IndividualValues { get; private set; }
     public EV EffortValues { get; private set; }
+    public Condition Status { get; private set; }
 
     public PokemonBase Base => _base;
     public int Level => _level;
@@ -119,6 +120,12 @@ public class Pokemon
             Debug.Log($"The pokemon stat {stat} is {StatBoosts[stat]}");
 
         }
+    }
+    public void SetStatus(ConditionID conditionID)
+    {
+        if (Status != null) return;
+        Status = ConditionsDB.Conditions[conditionID];
+        StatusChanges.Enqueue($"{Base.Name} {Status.Message}");
     }
 
     public DamageDetail TakeDamage(Move move, Pokemon attacker)
