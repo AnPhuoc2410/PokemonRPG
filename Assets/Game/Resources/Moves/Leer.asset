@@ -13,8 +13,15 @@ MonoBehaviour:
   m_Name: Leer
   m_EditorClassIdentifier: 
   _name: Leer
-  _description: 
+  _description: Leer decreases the Defense stat of all adjacent opponents by one
+    stage
   _type: 1
   _power: 0
   _accuracy: 100
   _pp: 30
+  _category: 2
+  _effects:
+    _boosts:
+    - stat: 2
+      boost: -1
+  _target: 0

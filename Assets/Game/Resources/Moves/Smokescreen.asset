@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
   m_Name: Smokescreen
   m_EditorClassIdentifier: 
-  _name: 
-  _description: 
-  _type: 0
+  _name: Smokescreen
+  _description: Smokescreen lowers the target's accuracy stat by one stage.
+  _type: 1
   _power: 0
-  _accuracy: 0
-  _pp: 0
-  _category: 0
+  _accuracy: 100
+  _pp: 20
+  _category: 2
   _effects:
-    _boosts: []
+    _boosts:
+    - stat: 6
+      boost: -1
   _target: 0

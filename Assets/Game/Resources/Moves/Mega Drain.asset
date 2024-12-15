@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
   m_Name: Mega Drain
   m_EditorClassIdentifier: 
-  _name: 
-  _description: 
-  _type: 0
-  _power: 0
-  _accuracy: 0
-  _pp: 0
-  _category: 0
+  _name: Mega Drain
+  _description: "Mega Drain inflicts damage, and up to 50% of the damage dealt to
+    the target is restored to the user as HP (but not less than 1 HP), restoring
+    up to the Pok\xE9mon's maximum HP. "
+  _type: 5
+  _power: 40
+  _accuracy: 100
+  _pp: 15
+  _category: 1
   _effects:
     _boosts: []
-  _target: 0
+  _target: 1
