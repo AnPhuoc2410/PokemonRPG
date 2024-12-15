@@ -102,6 +102,16 @@ public class Pokemon
             statVal = Mathf.FloorToInt(statVal / boostTable[-boosts]);
         return statVal;
     }
+    public void ApplyBoosts(List<StatBoost> statBoosts)
+    {
+        foreach (var statBoost in statBoosts)
+        {
+            var stat = statBoost.stat;
+            var boost = statBoost.boost;
+
+            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
+        }
+    }
 
     public DamageDetail TakeDamage(Move move, Pokemon attacker)
     {

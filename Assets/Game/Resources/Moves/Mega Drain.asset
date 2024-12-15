@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
-  m_Name: Growl
+  m_Name: Mega Drain
   m_EditorClassIdentifier: 
-  _name: Growl
-  _description: Growl decreases the Attack stat of all adjacent opponents by one
-    stage.
-  _type: 1
+  _name: 
+  _description: 
+  _type: 0
   _power: 0
-  _accuracy: 100
-  _pp: 40
-  _category: 2
+  _accuracy: 0
+  _pp: 0
+  _category: 0
   _effects:
-    _boosts:
-    - stat: 1
-      boost: -1
+    _boosts: []
   _target: 0
