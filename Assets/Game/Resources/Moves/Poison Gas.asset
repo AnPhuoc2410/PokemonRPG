@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
+  m_Name: Poison Gas
+  m_EditorClassIdentifier: 
+  _name: Poision Gas
+  _description: In the Generation II core series games, when an in-game opponent
+    outside of the Battle Tower uses Poison Gas, the move has a 25% chance to fail
+    in addition to its normal chance to miss.
+  _type: 8
+  _power: 0
+  _accuracy: 90
+  _pp: 40
+  _category: 2
+  _effects:
+    _boosts: []
+  _target: 0

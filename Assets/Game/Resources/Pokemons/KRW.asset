@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
+  m_Name: KRW
+  m_EditorClassIdentifier: 
+  Pokename: KamenW
+  description: "Kamen Raid\u0101 Daburu"
+  frontSprite: {fileID: 21300000, guid: 2fe1051fa6faf3f4f83dde238bd38dfc, type: 3}
+  backSprite: {fileID: 21300000, guid: 2fe1051fa6faf3f4f83dde238bd38dfc, type: 3}
+  type1: 7
+  type2: 10
+  maxHP: 100
+  attack: 100
+  defense: 100
+  spAttack: 100
+  spDefense: 100
+  speed: 100
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: a85ff8c17cc95094c84dd2bf53dcc4bb, type: 2}
+    level: 50
+  - moveBase: {fileID: 11400000, guid: 99eb0f27ed3a9cb41a5939a447f74987, type: 2}
+    level: 50

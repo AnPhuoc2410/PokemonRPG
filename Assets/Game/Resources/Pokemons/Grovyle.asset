@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
+  m_Name: Grovyle
+  m_EditorClassIdentifier: 
+  Pokename: Grovyle
+  description: "This Pok\xE9mon adeptly flies from branch to branch in trees. In
+    a forest, no Pok\xE9mon can ever hope to catch a fleeing Grovyle however fast
+    they may be.\r\n"
+  frontSprite: {fileID: 21300000, guid: 6d4e901a1d7e246419ab749b7620b262, type: 3}
+  backSprite: {fileID: 21300000, guid: 022c9dac0c5a37e408cb0543c889b782, type: 3}
+  type1: 5
+  type2: 0
+  maxHP: 50
+  attack: 65
+  defense: 45
+  spAttack: 85
+  spDefense: 65
+  speed: 95
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: f2fafde1ead470f41992e03f080252dd, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: ccfd70757d7d7814190ed65483ba61a3, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: 1ca4eefe85a4100438d16727ad2719f2, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: cdf885b6ea2f44b4cb09cd8cc602e1d9, type: 2}
+    level: 10
