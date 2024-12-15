@@ -10,7 +10,13 @@ public class ConditionsDB
             {
                 Name = "Posion",
                 Description = "This is a posion condition",
-                Message = "has been posioned"
+                Message = "has been posioned",
+                OnAfterTurn = (Pokemon pokemon) =>
+                {
+                    int damage = Mathf.Max(pokemon.MaxHP / 8, 1);
+                    pokemon.UpdateHP(damage);
+                    pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is hurt due to poison");
+                }
             }
         },
         {
@@ -18,33 +24,68 @@ public class ConditionsDB
             {
                 Name = "Burn",
                 Description = "This is a burn condition",
-                Message = "has been burned"
+                Message = "has been burned",
+                OnAfterTurn = (Pokemon pokemon) =>
+                {
+                    int damage = Mathf.Max(pokemon.MaxHP / 16, 1);
+                    pokemon.UpdateHP(damage);
+                    pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is hurt due to burn");
+                }
             }
         },
-        {
-            ConditionID.Sleep, new Condition
-            {
-                Name = "Sleep",
-                Description = "This is a sleep condition",
-                Message = "has been asleep"
-            }
-        },
-        {
-            ConditionID.Paralysis, new Condition
-            {
-                Name = "Paralysis",
-                Description = "This is a paralysis condition",
-                Message = "has been paralyzed"
-            }
-        },
-        {
-            ConditionID.Freeze, new Condition
-            {
-                Name = "Freeze",
-                Description = "This is a freeze condition",
-                Message = "has been frozen"
-            }
-        }
+        //{
+        //    ConditionID.Sleep, new Condition
+        //    {
+        //        Name = "Sleep",
+        //        Description = "This is a sleep condition",
+        //        Message = "has been put to sleep",
+        //        OnAfterTurn = (Pokemon pokemon) =>
+        //        {
+        //            if (pokemon.StatusTime == 0)
+        //            {
+        //                pokemon.CureStatus();
+        //                pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} woke up");
+        //            }
+        //            else
+        //            {
+        //                pokemon.StatusTime--;
+        //                pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is still asleep");
+        //            }
+        //        }
+        //    }
+        //},
+        //{
+        //    ConditionID.Paralysis, new Condition
+        //    {
+        //        Name = "Paralysis",
+        //        Description = "This is a paralysis condition",
+        //        Message = "has been paralyzed",
+        //        OnAfterTurn = (Pokemon pokemon) =>
+        //        {
+        //            if (Random.Range(1, 5) == 1)
+        //            {
+        //                pokemon.CureStatus();
+        //                pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} has been cured of paralysis");
+        //            }
+        //        }
+        //    }
+        //},
+        //{
+        //    ConditionID.Freeze, new Condition
+        //    {
+        //        Name = "Freeze",
+        //        Description = "This is a freeze condition",
+        //        Message = "has been frozen",
+        //        OnAfterTurn = (Pokemon pokemon) =>
+        //        {
+        //            if (Random.Range(1, 5) == 1)
+        //            {
+        //                pokemon.CureStatus();
+        //                pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} has been thawed");
+        //            }
+        //        }
+        //    }
+        //}
     };
 
 }

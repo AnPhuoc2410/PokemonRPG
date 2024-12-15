@@ -128,22 +128,28 @@ public class BattleSystem : MonoBehaviour
         // Play attack animation
         yield return sourceUnit.PlayAttackAnimation();
 
-        // Handle status or damage moves
-        if (move.Base.Category == MoveCategory.Status)
-        {
-           yield return MoveEffect(move, sourceUnit.Pokemon, targetUnit.Pokemon);
-        }
-        else
+        // Handle moves with damage and/or status effects
+        if (move.Base.Category == MoveCategory.Physical || move.Base.Category == MoveCategory.Special)
         {
             // Play hit animation
             yield return targetUnit.PlayHitAnimation();
 
             // Calculate damage and update HP
             var damageDetails = targetUnit.Pokemon.TakeDamage(move, sourceUnit.Pokemon);
-            yield return targetUnit.Hud.UpdateHP();
+            yield return targetUnit.Hud.UpdateHubHP();
 
             // Show damage details
             yield return ShowDamageDetails(damageDetails);
+        }
+
+        // Apply additional effects if the move has status conditions
+        if (move.Base.Effects.Status != ConditionID.None)
+        {
+            if (UnityEngine.Random.Range(0, 100) < 40) // Check 40%
+            {
+                targetUnit.Pokemon.SetStatus(move.Base.Effects.Status);
+                yield return ShowStatusChanges(targetUnit.Pokemon);
+            }
         }
 
         // Check if the target has fainted
@@ -154,7 +160,22 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(2f);
             CheckBattleOver(targetUnit);
         }
+
+        // Handle post-turn effects like Poison or Burn
+        sourceUnit.Pokemon.OnAfterTurn();
+        yield return ShowStatusChanges(sourceUnit.Pokemon);
+        yield return sourceUnit.Hud.UpdateHubHP();
+
+        // Check if the source Pokémon fainted due to post-turn effects
+        if (sourceUnit.Pokemon.HP <= 0)
+        {
+            yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.Name} fainted!");
+            yield return sourceUnit.PlayFaintAnimation();
+            yield return new WaitForSeconds(2f);
+            CheckBattleOver(sourceUnit);
+        }
     }
+
     private IEnumerator ShowStatusChanges(Pokemon pokemon)
     {
         while (pokemon.StatusChanges.Count > 0)

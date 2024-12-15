@@ -9,7 +9,7 @@ public class Pokemon
 
     public int HP { get; private set; }
     public int MaxHP { get; private set; }
-
+    public bool isHpChanged { get; set; } = false;
     public List<Move> Moves { get; private set; }
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
@@ -150,17 +150,23 @@ public class Pokemon
         float modifier = critical * typeEffectiveness * Random.Range(0.85f, 1f);
         int damage = Mathf.FloorToInt(((2 * attacker.Level / 5f + 2) * move.Base.Power * (attack / defense) / 50 + 2) * modifier);
 
-        HP -= damage;
-        HP = Mathf.Clamp(HP, 0, MaxHP);
-
-        if (HP == 0) detail.Fainted = true;
+        UpdateHP(damage);
         return detail;
     }
 
+    public void UpdateHP(int damage)
+    {
+        HP = Mathf.Clamp(HP - damage, 0, MaxHP);
+        isHpChanged = true;
+    }
     public Move GetRandomMove()
     {
         int r = Random.Range(0, Moves.Count);
         return Moves[r];
+    }
+    public void OnAfterTurn()
+    {
+        Status?.OnAfterTurn?.Invoke(this);
     }
     public void OnBattleOver()
     {

@@ -21,37 +21,41 @@ public class BattleHub : MonoBehaviour
         hpBar.SetHealth((float)pokemon.HP / pokemon.MaxHP);
     }
 
-    public IEnumerator UpdateHP()
+    public IEnumerator UpdateHubHP()
     {
         float currentHP = _pokemon.HP;
         float maxHP = _pokemon.MaxHP;
-
-        // Get the current displayed values for the bar and text
-        float startHP = float.Parse(hp.text.Split('/')[0]); // Extract current displayed HP
-        float startHealthBar = hpBar.GetCurrentHealth(); // New method in HPBar to get the current scale
-        float targetHealthBar = currentHP / maxHP;
-
-        float animationDuration = 0.5f; // Duration for both bar and text animation
-        float elapsedTime = 0f;
-
-        while (elapsedTime < animationDuration)
+        bool isHpChanged = _pokemon.isHpChanged;
+        if (isHpChanged)
         {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / animationDuration;
+            // Get the current displayed values for the bar and text
+            float startHP = float.Parse(hp.text.Split('/')[0]); // Extract current displayed HP
+            float startHealthBar = hpBar.GetCurrentHealth(); // New method in HPBar to get the current scale
+            float targetHealthBar = currentHP / maxHP;
 
-            // Interpolate bar scale and HP text
-            float interpolatedHealth = Mathf.Lerp(startHealthBar, targetHealthBar, t);
-            float interpolatedHP = Mathf.Lerp(startHP, currentHP, t);
+            float animationDuration = 0.5f; // Duration for both bar and text animation
+            float elapsedTime = 0f;
 
-            // Update bar and text
-            hpBar.SetHealth(interpolatedHealth);
-            hp.text = Mathf.FloorToInt(interpolatedHP) + "/" + maxHP;
+            while (elapsedTime < animationDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = elapsedTime / animationDuration;
 
-            yield return null;
+                // Interpolate bar scale and HP text
+                float interpolatedHealth = Mathf.Lerp(startHealthBar, targetHealthBar, t);
+                float interpolatedHP = Mathf.Lerp(startHP, currentHP, t);
+
+                // Update bar and text
+                hpBar.SetHealth(interpolatedHealth);
+                hp.text = Mathf.FloorToInt(interpolatedHP) + "/" + maxHP;
+
+                yield return null;
+            }
+
+            // Ensure final values are set
+            hpBar.SetHealth(targetHealthBar);
+            hp.text = currentHP + "/" + maxHP;
+            _pokemon.isHpChanged = false;
         }
-
-        // Ensure final values are set
-        hpBar.SetHealth(targetHealthBar);
-        hp.text = currentHP + "/" + maxHP;
     }
 }

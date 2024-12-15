@@ -23,4 +23,5 @@ MonoBehaviour:
   _category: 1
   _effects:
     _boosts: []
+    status: 2
   _target: 0
