@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88396343c18681c46b5e991dd0d88300, type: 3}
   m_Name: KRW
   m_EditorClassIdentifier: 
-  Pokename: KamenW
+  Pokename: Kamen Rider W
   description: "Kamen Raid\u0101 Daburu"
   frontSprite: {fileID: 21300000, guid: 2fe1051fa6faf3f4f83dde238bd38dfc, type: 3}
   backSprite: {fileID: 21300000, guid: 2fe1051fa6faf3f4f83dde238bd38dfc, type: 3}
