@@ -122,6 +122,14 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator ExecuteMove(BattleUnit sourceUnit, BattleUnit targetUnit, Move move)
     {
+        bool canRunMove = sourceUnit.Pokemon.OnBeforeTurn();
+        if (!canRunMove)
+        {
+            yield return ShowStatusChanges(sourceUnit.Pokemon);
+            yield break;
+        }
+        yield return ShowStatusChanges(sourceUnit.Pokemon);
+
         move.PP--;
         yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.Name} used {move.Base.Name}!");
 
@@ -142,15 +150,7 @@ public class BattleSystem : MonoBehaviour
             yield return ShowDamageDetails(damageDetails);
         }
 
-        // Apply additional effects if the move has status conditions
-        if (move.Base.Effects.Status != ConditionID.None)
-        {
-            if (UnityEngine.Random.Range(0, 100) < 40) // Check 40%
-            {
-                targetUnit.Pokemon.SetStatus(move.Base.Effects.Status);
-                yield return ShowStatusChanges(targetUnit.Pokemon);
-            }
-        }
+        yield return MoveEffect(move, sourceUnit.Pokemon, targetUnit.Pokemon);
 
         // Check if the target has fainted
         if (targetUnit.Pokemon.HP <= 0)
@@ -184,41 +184,31 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog(message);
         }
     }
-    private IEnumerator MoveEffect(Move move,Pokemon source,Pokemon target)
+    private IEnumerator MoveEffect(Move move, Pokemon source, Pokemon target)
     {
         var effect = move.Base.Effects;
         if (effect.Boosts != null)
         {
             if (move.Base.Target == MoveTarget.Self)
-            {
                 source.ApplyBoosts(effect.Boosts);
-            }
             else
-            {
                 target.ApplyBoosts(effect.Boosts);
-            }
         }
-        if(effect.Status != ConditionID.None)
-        {
+        if (effect.Status != ConditionID.None)
             target.SetStatus(effect.Status);
-        }
         yield return ShowStatusChanges(source);
         yield return ShowStatusChanges(target);
     }
 
-        private void CheckBattleOver(BattleUnit faintedUnit)
+    private void CheckBattleOver(BattleUnit faintedUnit)
     {
         if (faintedUnit.IsPlayerUnit)
         {
             var nextPokemon = playerParty.GetNotFaintedPokemon();
             if (nextPokemon != null)
-            {
                 OpenPartyScreen();
-            }
             else
-            {
                 EndBattle(false);
-            }
         }
         else
         {

@@ -66,7 +66,7 @@ public class Pokemon
         };
     }
 
-        private void StatsInit()
+    private void StatsInit()
     {
         Stats = new Dictionary<Stat, int>
         {
@@ -97,7 +97,7 @@ public class Pokemon
         int boosts = StatBoosts.ContainsKey(stat) ? StatBoosts[stat] : 0;
         var boostTable = new float[] { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 4.5f, 5f };
 
-        if(boosts >= 0)
+        if (boosts >= 0)
             statVal = Mathf.FloorToInt(statVal * boostTable[boosts]);
         else
             statVal = Mathf.FloorToInt(statVal / boostTable[-boosts]);
@@ -167,6 +167,14 @@ public class Pokemon
     public void OnAfterTurn()
     {
         Status?.OnAfterTurn?.Invoke(this);
+    }
+    public bool OnBeforeTurn()
+    {
+        if (Status?.OnBeforeTurn != null)
+        {
+            return Status.OnBeforeTurn(this);
+        }
+        return true;
     }
     public void OnBattleOver()
     {
