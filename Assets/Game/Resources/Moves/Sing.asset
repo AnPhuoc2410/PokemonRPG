@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
-  m_Name: Mega Drain
+  m_Name: Sing
   m_EditorClassIdentifier: 
-  _name: Mega Drain
-  _description: "Mega Drain inflicts damage, and up to 50% of the damage dealt to
-    the target is restored to the user as HP (but not less than 1 HP), restoring
-    up to the Pok\xE9mon's maximum HP. "
-  _type: 5
-  _power: 40
-  _accuracy: 100
+  _name: Sing
+  _description: Sing puts the target to sleep.
+  _type: 1
+  _power: 0
+  _accuracy: 55
   _pp: 15
-  _category: 1
+  _category: 2
   _effects:
     _boosts: []
-    status: 0
+    status: 3
   _target: 0

@@ -17,7 +17,7 @@ public class Pokemon
     public IV IndividualValues { get; private set; }
     public EV EffortValues { get; private set; }
     public Condition Status { get; private set; }
-
+    public int StatusTime { get; set; }
     public PokemonBase Base => _base;
     public int Level => _level;
 
@@ -125,6 +125,7 @@ public class Pokemon
     {
         if (Status != null) return;
         Status = ConditionsDB.Conditions[conditionID];
+        Status?.OnStart?.Invoke(this);
         StatusChanges.Enqueue($"{Base.Name} {Status.Message}");
     }
 
@@ -180,5 +181,10 @@ public class Pokemon
     {
         StatusChanges.Clear();
         StatBootsInit();
+    }
+
+    public void CureStatus()
+    {
+        Status = null;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public enum ConditionID
 {
     None,
-    Posion,
+    Poison,
     Burn,
     Sleep,
     Paralysis,

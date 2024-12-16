@@ -2339,18 +2339,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - _base: {fileID: 11400000, guid: d27bb12c2dcd01a4f822f6fda9626e0e, type: 2}
-    _level: 8
   - _base: {fileID: 11400000, guid: 7ab762e00a21bc94db8630d4c9cdde52, type: 2}
+    _level: 8
+  - _base: {fileID: 11400000, guid: d27bb12c2dcd01a4f822f6fda9626e0e, type: 2}
     _level: 8
   - _base: {fileID: 11400000, guid: d53ff34c2749bc04fa100c3cbff6e5a9, type: 2}
     _level: 7
   - _base: {fileID: 11400000, guid: f3b58b047e6170c41b19adea87914d43, type: 2}
     _level: 7
-  - _base: {fileID: 11400000, guid: fe346e199f18d774c8a5c4c2f3086b18, type: 2}
-    _level: 7
   - _base: {fileID: 11400000, guid: 117defaeff48d73409c3ca286c3f8458, type: 2}
     _level: 50
+  - _base: {fileID: 11400000, guid: fe346e199f18d774c8a5c4c2f3086b18, type: 2}
+    _level: 10
 --- !u!224 &748092624 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
