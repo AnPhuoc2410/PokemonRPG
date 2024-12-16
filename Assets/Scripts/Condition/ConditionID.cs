@@ -2,10 +2,10 @@ using UnityEngine;
 
 public enum ConditionID
 {
-    None,
-    Poison,
-    Burn,
-    Sleep,
-    Paralysis,
-    Freeze
+    none,
+    psn,
+    brn,
+    slp,
+    frz,
+    par,
 }

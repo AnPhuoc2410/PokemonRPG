@@ -10,6 +10,8 @@ public class Pokemon
     public int HP { get; private set; }
     public int MaxHP { get; private set; }
     public bool isHpChanged { get; set; } = false;
+    public event System.Action OnStatusChanged;
+
     public List<Move> Moves { get; private set; }
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
@@ -127,6 +129,7 @@ public class Pokemon
         Status = ConditionsDB.Conditions[conditionID];
         Status?.OnStart?.Invoke(this);
         StatusChanges.Enqueue($"{Base.Name} {Status.Message}");
+        OnStatusChanged?.Invoke();
     }
 
     public DamageDetail TakeDamage(Move move, Pokemon attacker)
@@ -186,5 +189,6 @@ public class Pokemon
     public void CureStatus()
     {
         Status = null;
+        OnStatusChanged?.Invoke();
     }
 }

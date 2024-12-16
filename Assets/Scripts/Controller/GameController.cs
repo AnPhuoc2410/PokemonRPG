@@ -13,6 +13,11 @@ public class GameController : MonoBehaviour
     private GameState gameState;
     private bool isBattleActive = false;
 
+    private void Awake()
+    {
+        ConditionsDB.Init();
+    }
+
     private void Start()
     {
         if (playerController == null)

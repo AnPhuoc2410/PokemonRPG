@@ -194,7 +194,7 @@ public class BattleSystem : MonoBehaviour
             else
                 target.ApplyBoosts(effect.Boosts);
         }
-        if (effect.Status != ConditionID.None)
+        if (effect.Status != ConditionID.none)
             target.SetStatus(effect.Status);
         yield return ShowStatusChanges(source);
         yield return ShowStatusChanges(target);

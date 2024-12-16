@@ -3,10 +3,19 @@ using UnityEngine;
 
 public class ConditionsDB
 {
+    public static void Init()
+    {
+        foreach (var kvp in Conditions)
+        {
+            Condition condition = kvp.Value;
+            condition.ID = kvp.Key;
+        }
+    }
+
     public static Dictionary<ConditionID, Condition> Conditions { get; set; } = new Dictionary<ConditionID, Condition>()
 {
     {
-        ConditionID.Poison, new Condition
+        ConditionID.psn, new Condition
         {
             Name = "Poison",
             Description = "The Pokémon is poisoned and takes damage over time.",
@@ -20,7 +29,7 @@ public class ConditionsDB
         }
     },
     {
-        ConditionID.Burn, new Condition
+        ConditionID.brn, new Condition
         {
             Name = "Burn",
             Description = "The Pokémon is burned and takes damage over time.",
@@ -34,7 +43,7 @@ public class ConditionsDB
         }
     },
     {
-        ConditionID.Paralysis, new Condition
+        ConditionID.par, new Condition
         {
             Name = "Paralysis",
             Description = "The Pokémon is paralyzed and may not move.",
@@ -51,7 +60,7 @@ public class ConditionsDB
         }
     },
     {
-        ConditionID.Freeze, new Condition
+        ConditionID.frz, new Condition
         {
             Name = "Freeze",
             Description = "The Pokémon is frozen and may thaw out over time.",
@@ -69,7 +78,7 @@ public class ConditionsDB
         }
     },
     {
-        ConditionID.Sleep, new Condition
+        ConditionID.slp, new Condition
         {
             Name = "Sleep",
             Description = "The Pokémon is asleep and cannot move for a few turns.",
