@@ -102,9 +102,11 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator TryRun()
     {
         state = BattleState.Busy;
-        bool canRun = UnityEngine.Random.value < 0.5f;
 
-        if (canRun)
+        int runChance = (playerUnit.Pokemon.Speed * 128) / (enemyUnit.Pokemon.Speed / 4) + 30;
+        runChance = Mathf.Clamp(runChance, 0, 255);
+
+        if (UnityEngine.Random.Range(0, 256) < runChance)
         {
             yield return dialogBox.TypeDialog("Got away safely!");
             EndBattle(true);
@@ -115,6 +117,7 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(EnemyMove());
         }
     }
+
 
     private IEnumerator PlayerMove()
     {
