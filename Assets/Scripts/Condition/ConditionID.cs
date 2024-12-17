@@ -8,4 +8,5 @@ public enum ConditionID
     slp,
     frz,
     par,
+    confusion,
 }

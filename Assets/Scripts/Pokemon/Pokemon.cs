@@ -19,6 +19,8 @@ public class Pokemon
     public IV IndividualValues { get; private set; }
     public EV EffortValues { get; private set; }
     public Condition Status { get; private set; }
+    public Condition VolatileStatus { get; private set; }
+    public int VolatieStatusTime { get; set; }
     public int StatusTime { get; set; }
     public PokemonBase Base => _base;
     public int Level => _level;
@@ -39,6 +41,8 @@ public class Pokemon
         StatsInit();
         HP = MaxHP;
         StatBootsInit();
+        Status = null;
+        VolatileStatus = null;
     }
 
     private List<Move> GenerateMoves()
@@ -171,24 +175,42 @@ public class Pokemon
     public void OnAfterTurn()
     {
         Status?.OnAfterTurn?.Invoke(this);
+        VolatileStatus?.OnAfterTurn?.Invoke(this);
     }
     public bool OnBeforeTurn()
     {
+        bool canPerformMove = true;
         if (Status?.OnBeforeTurn != null)
         {
-            return Status.OnBeforeTurn(this);
+            if (!Status.OnBeforeTurn(this)) canPerformMove = false;
         }
-        return true;
+        if (VolatileStatus?.OnBeforeTurn != null)
+        {
+            if (!VolatileStatus.OnBeforeTurn(this)) canPerformMove = false;
+        }
+        return canPerformMove;
     }
     public void OnBattleOver()
     {
+        VolatileStatus = null;
         StatusChanges.Clear();
         StatBootsInit();
+    }
+    public void SetVolatileStatus(ConditionID conditionID)
+    {
+        if (VolatileStatus != null) return;
+        VolatileStatus = ConditionsDB.Conditions[conditionID];
+        VolatileStatus?.OnStart?.Invoke(this);
+        StatusChanges.Enqueue($"{Base.Name} {VolatileStatus.Message}");
     }
 
     public void CureStatus()
     {
         Status = null;
         OnStatusChanged?.Invoke();
+    }
+    public void CureVolatileStatus()
+    {
+        VolatileStatus = null;
     }
 }

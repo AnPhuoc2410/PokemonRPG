@@ -102,6 +102,40 @@ public class ConditionsDB
                 return false;
             }
         }
+    },
+    {
+        ConditionID.confusion, new Condition
+        {
+            Name = "Confusion",
+            Description = "The Pokémon is confused and may hurt itself.",
+            Message = "became confused!",
+            OnStart = (Pokemon pokemon) =>
+            {
+                // Confusion condition lasts for 1-4 turns
+                pokemon.VolatieStatusTime = Random.Range(1, 5);
+                Debug.Log($"Confusion Time: {pokemon.VolatieStatusTime}");
+            },
+            OnBeforeTurn = (Pokemon pokemon) =>
+            {
+                if (pokemon.VolatieStatusTime <= 0)
+                {
+                    pokemon.CureVolatileStatus();
+                    pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} snapped out of its confusion.");
+                    return true;
+                }
+                pokemon.VolatieStatusTime--;
+                if (Random.Range(1, 3) == 1) // 33% chance
+                {
+                    pokemon.CureVolatileStatus();
+                    pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} snapped out of its confusion.");
+                    return true;
+                }
+                pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is confused.");
+                pokemon.UpdateHP(pokemon.MaxHP / 8); // 1/8 of max HP damage
+                pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} hurt itself due to confusion.");
+                return false;
+            }
+        }
     }
 };
 
