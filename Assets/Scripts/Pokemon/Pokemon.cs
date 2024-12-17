@@ -82,7 +82,6 @@ public class Pokemon
             { Stat.SpDefense, CalculateStat(_base.SpDefense, IndividualValues.SpDefense, EffortValues.SpDefense, _level) },
             { Stat.Speed, CalculateStat(_base.Speed, IndividualValues.Speed, EffortValues.Speed, _level) },
             { Stat.HP, CalculateHPStat(_base.MaxHP, IndividualValues.HP, EffortValues.HP, _level) },
-            { Stat.Accuracy, 100 }
         };
         MaxHP = Stats[Stat.HP];
     }
