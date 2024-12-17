@@ -160,13 +160,14 @@ public class BattleSystem : MonoBehaviour
         {
             // Play attack animation
             yield return sourceUnit.PlayAttackAnimation();
-
-            // Handle moves with damage and/or status effects
-            if (move.Base.Category == MoveCategory.Physical || move.Base.Category == MoveCategory.Special)
+            // Play hit animation
+            yield return targetUnit.PlayHitAnimation();
+            if (move.Base.Category == MoveCategory.Status)
             {
-                // Play hit animation
-                yield return targetUnit.PlayHitAnimation();
-
+                yield return MoveEffect(move.Base.Effects, sourceUnit.Pokemon, targetUnit.Pokemon,move.Base.Target);
+            }
+            else
+            {
                 // Calculate damage and update HP
                 var damageDetails = targetUnit.Pokemon.TakeDamage(move, sourceUnit.Pokemon);
                 yield return targetUnit.Hud.UpdateHubHP();
@@ -174,9 +175,17 @@ public class BattleSystem : MonoBehaviour
                 // Show damage details
                 yield return ShowDamageDetails(damageDetails);
             }
-
-            yield return MoveEffect(move, sourceUnit.Pokemon, targetUnit.Pokemon);
-
+            if(move.Base.SecondaryEffects != null && move.Base.SecondaryEffects.Count > 0 && targetUnit.Pokemon.HP > 0)
+            {
+                foreach (var secondary in move.Base.SecondaryEffects)
+                {
+                    var rnd = UnityEngine.Random.Range(1,101);
+                    if (rnd <= secondary.ChanceEffect)
+                    {
+                        yield return MoveEffect(secondary, sourceUnit.Pokemon, targetUnit.Pokemon,secondary.Target);
+                    }
+                }
+            }
             // Check if the target has fainted
             if (targetUnit.Pokemon.HP <= 0)
             {
@@ -213,20 +222,21 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog(message);
         }
     }
-    private IEnumerator MoveEffect(Move move, Pokemon source, Pokemon target)
+    private IEnumerator MoveEffect(MoveEffects effects, Pokemon source, Pokemon target,MoveTarget moveTarget)
     {
-        var effect = move.Base.Effects;
-        if (effect.Boosts != null)
+        if (effects.Boosts != null)
         {
-            if (move.Base.Target == MoveTarget.Self)
-                source.ApplyBoosts(effect.Boosts);
+            if (moveTarget == MoveTarget.Self)
+                source.ApplyBoosts(effects.Boosts);
             else
-                target.ApplyBoosts(effect.Boosts);
+                target.ApplyBoosts(effects.Boosts);
         }
-        if (effect.Status != ConditionID.none)
-            target.SetStatus(effect.Status);
-        if (effect.VolatileStatus != ConditionID.none)
-            target.SetVolatileStatus(effect.VolatileStatus);
+        //Status Condition
+        if (effects.Status != ConditionID.none)
+            target.SetStatus(effects.Status);
+        //Volatile Status
+        if (effects.VolatileStatus != ConditionID.none)
+            target.SetVolatileStatus(effects.VolatileStatus);
         yield return ShowStatusChanges(source);
         yield return ShowStatusChanges(target);
     }

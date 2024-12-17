@@ -12,6 +12,15 @@ public class MoveEffects
     public ConditionID Status => status;
     public ConditionID VolatileStatus => volatileStatus;
 }
+[System.Serializable]
+public class SecondaryEffect : MoveEffects
+{
+    [SerializeField] int chance;
+    [SerializeField] MoveTarget target;
+
+    public int ChanceEffect => chance;
+    public MoveTarget Target => target;
+}
 
 [System.Serializable]
 public class StatBoost
