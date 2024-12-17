@@ -30,6 +30,10 @@ public class PokemonManager : MonoBehaviour
         {
             displayText.text = "Please enter a Pokémon name.";
         }
+        if(pokemonName == "Pikachu")
+        {
+            displayText.text = "Pikachu is the best!";
+        }
     }
 
     private void UpdateUI()
