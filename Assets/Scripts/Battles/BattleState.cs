@@ -4,7 +4,7 @@ public enum BattleState
     Start,
     ActionSelection,
     MoveSelection,
-    PerformMove,
+    RunningTurn,
     Busy,
     PartyScreen,
     Bag,

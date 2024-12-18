@@ -16,10 +16,12 @@ MonoBehaviour:
   _description: Thunder Wave has 100% accuracy and paralyzes the target.
   _type: 4
   _power: 0
-  _accuracy: 90
+  _accuracy: 100
   _pp: 20
   _category: 2
   _effects:
     _boosts: []
-    status: 4
+    status: 5
+    volatileStatus: 0
+  _secondaryEffects: []
   _target: 0

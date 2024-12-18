@@ -24,4 +24,11 @@ MonoBehaviour:
   _effects:
     _boosts: []
     status: 2
+    volatileStatus: 0
+  _secondaryEffects:
+  - _boosts: []
+    status: 2
+    volatileStatus: 0
+    chance: 10
+    target: 0
   _target: 0
