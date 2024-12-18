@@ -13,6 +13,7 @@ public class MoveBase : ScriptableObject
     [SerializeField] private int _power;
     [SerializeField] private int _accuracy;
     [SerializeField] private int _pp;
+    [SerializeField] private int _priority;
     [SerializeField] private MoveCategory _category;
     [SerializeField] private MoveEffects _effects;
     [SerializeField] private List<SecondaryEffect> _secondaryEffects;
@@ -24,6 +25,7 @@ public class MoveBase : ScriptableObject
     public int Power => _power;
     public int Accuracy => _accuracy;
     public int PP => _pp;
+    public int Priority => _priority;
     public MoveCategory Category => _category;
     public MoveEffects Effects => _effects;
     public MoveTarget Target => _target;

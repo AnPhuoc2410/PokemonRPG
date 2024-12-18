@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f45c17c92b7a18548afd8a04cd7d41cf, type: 3}
-  m_Name: Knock Off
+  m_Name: Quick Attack
   m_EditorClassIdentifier: 
-  _name: Knock Off
-  _description: Knock Off inflicts damage and knocks off the target's held item if
-    it has one.
-  _type: 16
-  _power: 65
+  _name: Quick Attack
+  _description: 
+  _type: 1
+  _power: 40
   _accuracy: 100
-  _pp: 20
-  _priority: 0
+  _pp: 30
+  _priority: 1
   _category: 0
   _effects:
     _boosts: []
