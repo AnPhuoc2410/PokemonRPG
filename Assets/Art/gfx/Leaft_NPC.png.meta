@@ -124,7 +124,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -138,7 +138,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -872,7 +872,37 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Leaft_NPC_0: -8921549357663908079
+      Leaft_NPC_1: 7266576243092430033
+      Leaft_NPC_10: -5155148660416031420
+      Leaft_NPC_11: 6179131527370295109
+      Leaft_NPC_12: 5493353624373582905
+      Leaft_NPC_13: 2672144761734935769
+      Leaft_NPC_14: 2022978117088166653
+      Leaft_NPC_15: 5679182098530544104
+      Leaft_NPC_16: 6882914576204441415
+      Leaft_NPC_17: 3126546981118776934
+      Leaft_NPC_18: 5363714196450774575
+      Leaft_NPC_19: -2161747702221502019
+      Leaft_NPC_2: 680457626160908211
+      Leaft_NPC_20: -6684344596747140881
+      Leaft_NPC_21: 9024211316187139114
+      Leaft_NPC_22: 5898802309494006119
+      Leaft_NPC_23: -8129290796640547532
+      Leaft_NPC_24: 748033918904981536
+      Leaft_NPC_25: -4511064111748988794
+      Leaft_NPC_26: 1054076619195639546
+      Leaft_NPC_27: -8729840050747265269
+      Leaft_NPC_28: 7449062299247126624
+      Leaft_NPC_29: -8278457839415580383
+      Leaft_NPC_3: -3814254351426418512
+      Leaft_NPC_4: 4763657742710952403
+      Leaft_NPC_5: -5376949226147515480
+      Leaft_NPC_6: -5851760161522373275
+      Leaft_NPC_7: 2435355866893290645
+      Leaft_NPC_8: 1778932148403865649
+      Leaft_NPC_9: 445280251815173272
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
