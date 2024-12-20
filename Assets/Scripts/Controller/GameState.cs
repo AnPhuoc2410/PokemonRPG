@@ -2,5 +2,6 @@
 public enum GameState
 {
     FreeRoam,
-    Battle
+    Battle,
+    Dialog
 }

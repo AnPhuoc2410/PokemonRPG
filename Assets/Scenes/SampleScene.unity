@@ -418,12 +418,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 92559374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d90ffeebd8312428501d36b115004a, type: 3}
+  m_Script: {fileID: 11500000, guid: c50245d947ae0c3458c997b7777730e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogLines:
-  - Hi,Hello Satoshi
-  - You have a quest
+  dialog:
+    dialogLines:
+    - Hi, Satoshi
+    - You have a quest to finish!
 --- !u!1 &94928578
 GameObject:
   m_ObjectHideFlags: 0

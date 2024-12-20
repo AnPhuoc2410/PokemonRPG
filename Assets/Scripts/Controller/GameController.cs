@@ -20,26 +20,14 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        if (playerController == null)
-        {
-            Debug.LogError("PlayerController is not assigned in GameController");
-            return;
-        }
-
-        if (battleController == null)
-        {
-            Debug.LogError("BattleSystem is not assigned in GameController");
-            return;
-        }
-
-        if (worldCamera == null)
-        {
-            Debug.LogError("WorldCamera is not assigned in GameController");
-            return;
-        }
 
         playerController.OnEncountered += StartBattle;
         battleController.OnBattleOver += EndBattle;
+        DialogManager.Instance.OnShowDialog += () => gameState = GameState.Dialog;
+        DialogManager.Instance.OnCloseDialog += () =>
+        {
+            if (gameState == GameState.Dialog) gameState = GameState.FreeRoam;
+        };
     }
 
     private void StartBattle()
@@ -90,11 +78,18 @@ public class GameController : MonoBehaviour
     {
         if (gameState == GameState.FreeRoam)
         {
+            // Handle free roam input
             playerController.HandleUpdate();
         }
         else if (gameState == GameState.Battle)
         {
+            // Handle battle input
             battleController.HandleUpdate();
+        }
+        else if (gameState == GameState.Dialog)
+        {
+            // Handle dialog input
+            DialogManager.Instance.HandleUpdate();
         }
     }
 }

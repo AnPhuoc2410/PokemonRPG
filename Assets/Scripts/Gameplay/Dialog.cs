@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialog : MonoBehaviour
+[System.Serializable]
+public class Dialog
 {
     [SerializeField] List<string> dialogLines;
 
