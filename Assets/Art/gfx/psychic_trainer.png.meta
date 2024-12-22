@@ -1,55 +1,58 @@
 fileFormatVersion: 2
-guid: b91c89215e72bb94fba4cba3230a7189
+guid: 00f5921752b7cd14695acc510a2f4786
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7831971674420276874
-    second: deogenr_0
+      213: 7938995556866836328
+    second: psychic_trainer_0
   - first:
-      213: -444467782744662359
-    second: deogenr_1
+      213: -445527675932568665
+    second: psychic_trainer_1
   - first:
-      213: -4109274582524613543
-    second: deogenr_2
+      213: 5280407928942249721
+    second: psychic_trainer_2
   - first:
-      213: -3771710525352932490
-    second: deogenr_3
+      213: 4888009816416157208
+    second: psychic_trainer_3
   - first:
-      213: 1172175472442003671
-    second: deogenr_4
+      213: -2803897011390636408
+    second: psychic_trainer_4
   - first:
-      213: 8038427149827600774
-    second: deogenr_5
+      213: -6675117991092659982
+    second: psychic_trainer_5
   - first:
-      213: -2632213970722199260
-    second: deogenr_6
+      213: -844697029354484892
+    second: psychic_trainer_6
   - first:
-      213: -7737060525459659585
-    second: deogenr_7
+      213: -2024405620660114962
+    second: psychic_trainer_7
   - first:
-      213: -8891792159629741131
-    second: deogenr_8
+      213: 3170789676393311053
+    second: psychic_trainer_8
   - first:
-      213: 5422887343439500353
-    second: deogenr_9
+      213: 6820904154444823333
+    second: psychic_trainer_9
   - first:
-      213: 3296615320631207004
-    second: deogenr_10
+      213: 3268412714063427470
+    second: psychic_trainer_10
   - first:
-      213: 8777608726231403314
-    second: deogenr_11
+      213: -3718729121881752726
+    second: psychic_trainer_11
   - first:
-      213: 6357456383334741437
-    second: deogenr_12
+      213: -1424335087333151377
+    second: psychic_trainer_12
   - first:
-      213: -1822339141462046347
-    second: deogenr_13
+      213: 3174810926759898667
+    second: psychic_trainer_13
   - first:
-      213: -7015991560731142379
-    second: deogenr_14
+      213: -5122973062779549625
+    second: psychic_trainer_14
   - first:
-      213: 457661602427594876
-    second: deogenr_15
+      213: -1539048073630037862
+    second: psychic_trainer_15
+  - first:
+      213: -6754839973638600850
+    second: psychic_trainer_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -158,56 +161,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: deogenr_0
+      name: psychic_trainer_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 197
-        width: 36
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6711247f14f3f4390800000000000000
-      internalID: -7831971674420276874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_1
-      rect:
-        serializedVersion: 2
-        x: 78
+        x: 11
         y: 195
-        width: 38
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ae166f08eee4d9f0800000000000000
-      internalID: -444467782744662359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_2
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 197
-        width: 36
+        width: 40
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -217,41 +176,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 95c24100a8ce8f6c0800000000000000
-      internalID: -4109274582524613543
+      spriteID: 867c378756afc2e60800000000000000
+      internalID: 7938995556866836328
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deogenr_3
+      name: psychic_trainer_1
       rect:
         serializedVersion: 2
-        x: 204
+        x: 75
+        y: 193
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a31f6270fa21d9f0800000000000000
+      internalID: -445527675932568665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_2
+      rect:
+        serializedVersion: 2
+        x: 139
         y: 195
-        width: 38
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 67b8cb4b24138abc0800000000000000
-      internalID: -3771710525352932490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_4
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 133
-        width: 36
+        width: 40
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -261,239 +220,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d0d459b167644010800000000000000
-      internalID: 1172175472442003671
+      spriteID: 9f642c9d807c74940800000000000000
+      internalID: 5280407928942249721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deogenr_5
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 133
-        width: 36
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 681745247ea3e8f60800000000000000
-      internalID: 8038427149827600774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_6
-      rect:
-        serializedVersion: 2
-        x: 143
-        y: 133
-        width: 36
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4296846f65f787bd0800000000000000
-      internalID: -2632213970722199260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_7
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 133
-        width: 36
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fb4a74ed17070a490800000000000000
-      internalID: -7737060525459659585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_8
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 69
-        width: 36
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5b37aac34220a9480800000000000000
-      internalID: -8891792159629741131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_9
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 69
-        width: 36
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1445ca2ae47f14b40800000000000000
-      internalID: 5422887343439500353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_10
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 69
-        width: 36
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c54655bfa2eefbd20800000000000000
-      internalID: 3296615320631207004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_11
-      rect:
-        serializedVersion: 2
-        x: 205
-        y: 69
-        width: 36
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 23b446871a450d970800000000000000
-      internalID: 8777608726231403314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_12
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 5
-        width: 36
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db5f4bbb5e83a3850800000000000000
-      internalID: 6357456383334741437
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_13
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 3
-        width: 38
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5794ddcb430c5b6e0800000000000000
-      internalID: -1822339141462046347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_14
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 5
-        width: 36
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5175b7b09d032ae90800000000000000
-      internalID: -7015991560731142379
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deogenr_15
+      name: psychic_trainer_3
       rect:
         serializedVersion: 2
         x: 203
-        y: 3
-        width: 38
+        y: 193
+        width: 40
         height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -503,8 +242,294 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7868087dc0f95600800000000000000
-      internalID: 457661602427594876
+      spriteID: 81e7b1eb703b5d340800000000000000
+      internalID: 4888009816416157208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_4
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 49
+        width: 86
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88e1849168e8619d0800000000000000
+      internalID: -2803897011390636408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_5
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 131
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f85a1bad873d53a0800000000000000
+      internalID: -6675117991092659982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_6
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 131
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46b8f76f6880744f0800000000000000
+      internalID: -844697029354484892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_7
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 131
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee9ef3350ddd7e3e0800000000000000
+      internalID: -2024405620660114962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_8
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 131
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b26ee3968e00c20800000000000000
+      internalID: 3170789676393311053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_9
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 67
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b7ba49038b8ae50800000000000000
+      internalID: 6820904154444823333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_10
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 67
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e87fe11fb0cbb5d20800000000000000
+      internalID: 3268412714063427470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_11
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 67
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6b765af09b646cc0800000000000000
+      internalID: -3718729121881752726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_12
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 67
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6de166d8cebb3ce0800000000000000
+      internalID: -1424335087333151377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_13
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 3
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2e6d8e87b13f0c20800000000000000
+      internalID: 3174810926759898667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_14
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 1
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 748412f542b87e8b0800000000000000
+      internalID: -5122973062779549625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_15
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 3
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9848076ee334aae0800000000000000
+      internalID: -1539048073630037862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: psychic_trainer_16
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6789a825dcf142a0800000000000000
+      internalID: -6754839973638600850
       vertices: []
       indices: 
       edges: []
@@ -523,22 +548,23 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      deogenr_0: -7831971674420276874
-      deogenr_1: -444467782744662359
-      deogenr_10: 3296615320631207004
-      deogenr_11: 8777608726231403314
-      deogenr_12: 6357456383334741437
-      deogenr_13: -1822339141462046347
-      deogenr_14: -7015991560731142379
-      deogenr_15: 457661602427594876
-      deogenr_2: -4109274582524613543
-      deogenr_3: -3771710525352932490
-      deogenr_4: 1172175472442003671
-      deogenr_5: 8038427149827600774
-      deogenr_6: -2632213970722199260
-      deogenr_7: -7737060525459659585
-      deogenr_8: -8891792159629741131
-      deogenr_9: 5422887343439500353
+      psychic_trainer_0: 7938995556866836328
+      psychic_trainer_1: -445527675932568665
+      psychic_trainer_10: 3268412714063427470
+      psychic_trainer_11: -3718729121881752726
+      psychic_trainer_12: -1424335087333151377
+      psychic_trainer_13: 3174810926759898667
+      psychic_trainer_14: -5122973062779549625
+      psychic_trainer_15: -1539048073630037862
+      psychic_trainer_16: -6754839973638600850
+      psychic_trainer_2: 5280407928942249721
+      psychic_trainer_3: 4888009816416157208
+      psychic_trainer_4: -2803897011390636408
+      psychic_trainer_5: -6675117991092659982
+      psychic_trainer_6: -844697029354484892
+      psychic_trainer_7: -2024405620660114962
+      psychic_trainer_8: 3170789676393311053
+      psychic_trainer_9: 6820904154444823333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
