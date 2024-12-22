@@ -18,10 +18,15 @@ public class DialogManager : MonoBehaviour
     Dialog currentDialog;
     int currentLine = 0;
     bool isTyping;
+
+    public bool IsShowing { get; private set; }
     public IEnumerator ShowDialog(Dialog dialog)
     {
         yield return new WaitForEndOfFrame();
         OnShowDialog?.Invoke();
+
+        IsShowing = true;
+
         currentDialog = dialog;
         dialogBox.SetActive(true);
         StartCoroutine(TypeDialog(dialog.DialogLines[0]));
@@ -39,6 +44,8 @@ public class DialogManager : MonoBehaviour
             else
             {
                 currentLine = 0;
+
+                IsShowing = false;
                 dialogBox.SetActive(false);
                 OnCloseDialog?.Invoke();
             }

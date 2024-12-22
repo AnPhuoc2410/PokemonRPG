@@ -11,7 +11,7 @@ public class CharacterAnimator : MonoBehaviour
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
 
-    private bool preMove;
+    private bool wasMoving;
 
     private SpriteAnimator walkDownAnim;
     private SpriteAnimator walkUpAnim;
@@ -25,32 +25,48 @@ public class CharacterAnimator : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Initialize animations
         walkDownAnim = new SpriteAnimator(spriteRenderer, walkDownSprites);
         walkUpAnim = new SpriteAnimator(spriteRenderer, walkUpSprites);
         walkLeftAnim = new SpriteAnimator(spriteRenderer, walkLeftSprites);
         walkRightAnim = new SpriteAnimator(spriteRenderer, walkRightSprites);
 
-        currentAnim = walkDownAnim;
+        currentAnim = walkDownAnim; // Default animation
     }
+
     private void Update()
     {
-        var prevAnim = currentAnim;
-        if (MoveX == 1)
-            currentAnim = walkRightAnim;
-        else if (MoveX == -1)
-            currentAnim = walkLeftAnim;
-        else if (MoveY == 1)
-            currentAnim = walkUpAnim;
-        else if (MoveY == -1)
-            currentAnim = walkDownAnim;
+        // Determine the current animation based on movement direction
+        SpriteAnimator newAnim = GetAnimatorForDirection();
 
-        if (currentAnim != prevAnim || IsMoving != preMove)
+        // If the animation or movement state changes, restart the animation
+        if (currentAnim != newAnim || IsMoving != wasMoving)
+        {
+            currentAnim = newAnim;
             currentAnim.Start();
+        }
 
+        // Update animation if moving, otherwise reset to the first frame
         if (IsMoving)
+        {
             currentAnim.HandleUpdate();
+        }
         else
+        {
             currentAnim.Reset();
-        preMove = IsMoving;
+        }
+
+        wasMoving = IsMoving;
+    }
+
+    private SpriteAnimator GetAnimatorForDirection()
+    {
+        if (MoveX > 0) return walkRightAnim;
+        if (MoveX < 0) return walkLeftAnim;
+        if (MoveY > 0) return walkUpAnim;
+        if (MoveY < 0) return walkDownAnim;
+
+        return currentAnim; // Default to the last used animation if no direction
     }
 }

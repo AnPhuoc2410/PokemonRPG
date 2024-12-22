@@ -259,6 +259,8 @@ GameObject:
   - component: {fileID: 92559378}
   - component: {fileID: 92559377}
   - component: {fileID: 92559379}
+  - component: {fileID: 92559381}
+  - component: {fileID: 92559380}
   m_Layer: 8
   m_Name: DeoGner_NPC
   m_TagString: Untagged
@@ -330,7 +332,7 @@ Transform:
   m_GameObject: {fileID: 92559374}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 3.8, z: 0}
+  m_LocalPosition: {x: -9.2, y: -5.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -425,6 +427,57 @@ MonoBehaviour:
     dialogLines:
     - Hi, Satoshi
     - You have a quest to finish!
+  movementPattern:
+  - {x: 2, y: 0}
+  - {x: 0, y: 2}
+  - {x: -2, y: 0}
+  - {x: 0, y: -2}
+  timeBetweenPattern: 3
+--- !u!114 &92559380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92559374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2702dd03fc784254fbdf4e5261ec0351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkDownSprites:
+  - {fileID: -7831971674420276874, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: -444467782744662359, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: -4109274582524613543, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: -3771710525352932490, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  walkUpSprites:
+  - {fileID: 6357456383334741437, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: -1822339141462046347, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: -7015991560731142379, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: 457661602427594876, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  walkLeftSprites:
+  - {fileID: 1172175472442003671, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: 8038427149827600774, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: -2632213970722199260, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: -7737060525459659585, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  walkRightSprites:
+  - {fileID: -8891792159629741131, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: 5422887343439500353, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: 3296615320631207004, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+  - {fileID: 8777608726231403314, guid: d72af29fd9e0f9245a04a292a88f9ac1, type: 3}
+--- !u!114 &92559381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92559374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9500df97303cd4bae95dcde191c82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &94928578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,6 +2680,7 @@ GameObject:
   - component: {fileID: 640952502}
   - component: {fileID: 640952504}
   - component: {fileID: 640952505}
+  - component: {fileID: 640952506}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2718,16 +2772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da10445eaa8bbf2438343b6a58e79260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  solidObjectsLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  grassLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 256
   footstepSound: {fileID: 847947087}
 --- !u!114 &640952504
 MonoBehaviour:
@@ -2786,6 +2830,19 @@ MonoBehaviour:
   - {fileID: 2545128541471118269, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
   - {fileID: -2848480667422025577, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
   - {fileID: 1230547015370742240, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+--- !u!114 &640952506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640952499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9500df97303cd4bae95dcde191c82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!224 &748092624 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}
@@ -9463,6 +9520,7 @@ GameObject:
   - component: {fileID: 1779870228}
   - component: {fileID: 1779870227}
   - component: {fileID: 1779870229}
+  - component: {fileID: 1779870230}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -9514,6 +9572,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 124910090}
   dialogText: {fileID: 146042858}
+--- !u!114 &1779870230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779870226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0c1b1cfe35254f803783cfc394c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  grassLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1824990856
 GameObject:
   m_ObjectHideFlags: 0

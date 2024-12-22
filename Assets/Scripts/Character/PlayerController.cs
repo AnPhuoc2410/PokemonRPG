@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
-    public LayerMask solidObjectsLayer;
-    public LayerMask grassLayer;
-    public LayerMask interactableLayer;
-    private bool isMoving;  
     private Vector2 input; 
 
     public event Action OnEncountered;
 
-    private CharacterAnimator animator;
+    private Character character;
 
     public AudioSource footstepSound;
 
     private void Awake()
     {
-        animator = GetComponent<CharacterAnimator>();
+        character = GetComponent<Character>();
     }
     public void HandleUpdate()
     {
         // Prevent overlapping movement
-        if (!isMoving)
+        if (!character.IsMoving)
         {
             // Get horizontal and vertical input
             input.x = Input.GetAxisRaw("Horizontal");
@@ -36,16 +31,8 @@ public class PlayerController : MonoBehaviour
             // Check for movement input
             if (input != Vector2.zero)
             {
-                animator.MoveX = input.x;
-                animator.MoveY = input.y;         // Determine the target position
-                var targetPos = transform.position + new Vector3(input.x, input.y);
+                StartCoroutine(character.Move(input, CheckForEncounter));
 
-                if (IsWalkable(targetPos))
-                {
-                    // Start moving towards the target position
-                    StartCoroutine(Move(targetPos));
-                }
-             
                 // Start playing footstep sound if not already playing
                 if (!footstepSound.isPlaying)
                 {
@@ -61,49 +48,20 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        animator.IsMoving =  isMoving;
-
+        character.HandleUpdate();
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Interact();
         }
     }
-
-    IEnumerator Move(Vector3 targetPos)
-    {
-        isMoving = true;
-
-        
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-   
-        transform.position = targetPos;
-
-        isMoving = false;
-
-        CheckForEncounter();
-    }
-    private bool IsWalkable(Vector3 targetPos)
-    {
-        if (Physics2D.OverlapCircle(targetPos, 0.1f, solidObjectsLayer | interactableLayer) != null)
-        {
-            return false;
-        }
-        return true;
-    }
     private void CheckForEncounter()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.1f, grassLayer))
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, GameLayers.i.GrassLayer))
         {
             if (UnityEngine.Random.Range(1, 101) <= 50) // 10% chance for an encounter
             {
                 // Stop any movement
-                isMoving = false;
-                animator.IsMoving = false;
+                character.Animator.IsMoving = false;
 
                 // Stop the footstep sound
                 if (footstepSound.isPlaying)
@@ -116,10 +74,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Interact()
     {
-        var facingDir = new Vector3(animator.MoveX, animator.MoveY);
+        var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         var interactPos = transform.position + facingDir;
 
-        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer);
         if (collider != null)
         {
             collider.GetComponent<Interactable>()?.Interact();
