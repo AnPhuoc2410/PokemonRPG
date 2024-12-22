@@ -2625,8 +2625,8 @@ GameObject:
   - component: {fileID: 640952501}
   - component: {fileID: 640952500}
   - component: {fileID: 640952502}
-  - component: {fileID: 640952503}
   - component: {fileID: 640952504}
+  - component: {fileID: 640952505}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2729,28 +2729,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   footstepSound: {fileID: 847947087}
---- !u!95 &640952503
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640952499}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7155cfcacf46dfd46b5f727874cf17b6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &640952504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2776,6 +2754,38 @@ MonoBehaviour:
     _level: 50
   - _base: {fileID: 11400000, guid: fe346e199f18d774c8a5c4c2f3086b18, type: 2}
     _level: 10
+--- !u!114 &640952505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640952499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2702dd03fc784254fbdf4e5261ec0351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkDownSprites:
+  - {fileID: -324738465481583142, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 7430610752320310450, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 6967912203722622447, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 912497605445946193, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  walkUpSprites:
+  - {fileID: 1274615599082493417, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 7224290898076316994, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: -7082038846674081195, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: -2164955352335385618, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  walkLeftSprites:
+  - {fileID: 1963655638271956382, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: -4313984328308796512, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: -8852170756065634175, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 5548635101522334076, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  walkRightSprites:
+  - {fileID: 4984472715904258361, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 2545128541471118269, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: -2848480667422025577, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 1230547015370742240, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
 --- !u!224 &748092624 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8219020186348024566, guid: 9fbf26da9488acb4b9d06e2db0a7e16e, type: 3}

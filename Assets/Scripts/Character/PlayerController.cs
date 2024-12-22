@@ -13,13 +13,13 @@ public class PlayerController : MonoBehaviour
 
     public event Action OnEncountered;
 
-    private Animator animator;
+    private CharacterAnimator animator;
 
     public AudioSource footstepSound;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponent<CharacterAnimator>();
     }
     public void HandleUpdate()
     {
@@ -36,9 +36,8 @@ public class PlayerController : MonoBehaviour
             // Check for movement input
             if (input != Vector2.zero)
             {
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
-                // Determine the target position
+                animator.MoveX = input.x;
+                animator.MoveY = input.y;         // Determine the target position
                 var targetPos = transform.position + new Vector3(input.x, input.y);
 
                 if (IsWalkable(targetPos))
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        animator.SetBool("isMoving", isMoving);
+        animator.IsMoving =  isMoving;
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -104,7 +103,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Stop any movement
                 isMoving = false;
-                animator.SetBool("isMoving", false);
+                animator.IsMoving = false;
 
                 // Stop the footstep sound
                 if (footstepSound.isPlaying)
@@ -117,7 +116,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Interact()
     {
-        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var facingDir = new Vector3(animator.MoveX, animator.MoveY);
         var interactPos = transform.position + facingDir;
 
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
