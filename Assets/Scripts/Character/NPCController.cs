@@ -22,14 +22,16 @@ public class NPCController : MonoBehaviour, Interactable
     {
         if (state == NPCState.Idle)
         {
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialog));
+            state = NPCState.Talking;
+            StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () => {
+                idleTimer = 0f;
+                state = NPCState.Idle; }));
+
         }
     }
 
     private void Update()
-    {
-        if (DialogManager.Instance.IsShowing) return;
-
+    { 
         if (state == NPCState.Idle)
         {
             idleTimer += Time.deltaTime;
@@ -50,12 +52,14 @@ public class NPCController : MonoBehaviour, Interactable
     {
         state = NPCState.Walking;
 
-        // Randomize the direction, ensuring it's straight (horizontal or vertical only)
-        Vector2 direction = Random.value > 0.5f
-            ? new Vector2(Random.Range(0, 2) * 2 - 1, 0) * 3 // Horizontal: -1 or 1
-            : new Vector2(0, Random.Range(0, 2) * 2 - 1) * 3; // Vertical: -1 or 1
+        //// Randomize the direction, ensuring it's straight (horizontal or vertical only)
+        //Vector2 direction = Random.value > 0.5f
+        //    ? new Vector2(Random.Range(0, 2) * 2 - 1, 0) * 3 // Horizontal: -1 or 1
+        //    : new Vector2(0, Random.Range(0, 2) * 2 - 1) * 3; // Vertical: -1 or 1
 
-        yield return character.Move(direction);
+        //yield return character.Move(direction);
+        yield return character.Move(movementPattern[currentPattern]);
+        currentPattern = (currentPattern + 1) % movementPattern.Count;
 
         state = NPCState.Idle;
     }

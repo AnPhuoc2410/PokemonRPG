@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,18 +17,20 @@ public class DialogManager : MonoBehaviour
         Instance = this;
     }
     Dialog currentDialog;
+    Action onDialogFinished;
     int currentLine = 0;
     bool isTyping;
 
     public bool IsShowing { get; private set; }
-    public IEnumerator ShowDialog(Dialog dialog)
+    public IEnumerator ShowDialog(Dialog dialog, Action onFinished = null)
     {
         yield return new WaitForEndOfFrame();
         OnShowDialog?.Invoke();
 
         IsShowing = true;
-
         currentDialog = dialog;
+        onDialogFinished = onFinished;
+
         dialogBox.SetActive(true);
         StartCoroutine(TypeDialog(dialog.DialogLines[0]));
     }
@@ -47,6 +50,7 @@ public class DialogManager : MonoBehaviour
 
                 IsShowing = false;
                 dialogBox.SetActive(false);
+                onDialogFinished?.Invoke();
                 OnCloseDialog?.Invoke();
             }
         }
