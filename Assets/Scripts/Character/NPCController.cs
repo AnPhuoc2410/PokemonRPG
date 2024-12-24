@@ -18,11 +18,12 @@ public class NPCController : MonoBehaviour, Interactable
         character = GetComponent<Character>();
     }
 
-    public void Interact()
+    public void Interact(Transform initiator)
     {
         if (state == NPCState.Idle)
         {
             state = NPCState.Talking;
+            character.LookTowards(initiator.position);
             StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () => {
                 idleTimer = 0f;
                 state = NPCState.Idle; }));
@@ -51,6 +52,7 @@ public class NPCController : MonoBehaviour, Interactable
     private IEnumerator Walk()
     {
         state = NPCState.Walking;
+        var oldPosition = transform.position;
 
         //// Randomize the direction, ensuring it's straight (horizontal or vertical only)
         //Vector2 direction = Random.value > 0.5f
@@ -59,7 +61,8 @@ public class NPCController : MonoBehaviour, Interactable
 
         //yield return character.Move(direction);
         yield return character.Move(movementPattern[currentPattern]);
-        currentPattern = (currentPattern + 1) % movementPattern.Count;
+        if(transform.position != oldPosition)
+            currentPattern = (currentPattern + 1) % movementPattern.Count;
 
         state = NPCState.Idle;
     }
