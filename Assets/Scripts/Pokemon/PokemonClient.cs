@@ -92,6 +92,16 @@ public class PokemonClient : ScriptableObject
     {
         return System.Enum.TryParse(typeName, true, out PokemonType result) ? result : PokemonType.None;
     }
+    private void OnEnable()
+    {
+        frontSprite = null;
+        backSprite = null;
+    }
+    private void OnDisable()
+    {
+        frontSprite = null;
+        backSprite = null;
+    }
 
     public static class CoroutineRunner
     {
