@@ -37,6 +37,10 @@ public class CharacterAnimator : MonoBehaviour
 
     private void Update()
     {
+        // Snap small movement values to zero to avoid jittery animation
+        MoveX = Mathf.Abs(MoveX) > 0.1f ? Mathf.Sign(MoveX) : 0;
+        MoveY = Mathf.Abs(MoveY) > 0.1f ? Mathf.Sign(MoveY) : 0;
+
         // Determine the current animation based on movement direction
         SpriteAnimator newAnim = GetAnimatorForDirection();
 
@@ -62,6 +66,7 @@ public class CharacterAnimator : MonoBehaviour
 
     private SpriteAnimator GetAnimatorForDirection()
     {
+        // Prioritize horizontal movement over vertical for smoother transitions
         if (MoveX > 0) return walkRightAnim;
         if (MoveX < 0) return walkLeftAnim;
         if (MoveY > 0) return walkUpAnim;

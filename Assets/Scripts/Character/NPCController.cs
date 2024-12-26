@@ -54,16 +54,22 @@ public class NPCController : MonoBehaviour, Interactable
         state = NPCState.Walking;
         var oldPosition = transform.position;
 
-        //// Randomize the direction, ensuring it's straight (horizontal or vertical only)
-        //Vector2 direction = Random.value > 0.5f
-        //    ? new Vector2(Random.Range(0, 2) * 2 - 1, 0) * 3 // Horizontal: -1 or 1
-        //    : new Vector2(0, Random.Range(0, 2) * 2 - 1) * 3; // Vertical: -1 or 1
+        // Enforce alignment with the grid by snapping the position to whole numbers
+        transform.position = new Vector3(
+            Mathf.Round(transform.position.x),
+            Mathf.Round(transform.position.y),
+            transform.position.z
+        );
 
-        //yield return character.Move(direction);
-        yield return character.Move(movementPattern[currentPattern]);
+        // Move to the next position in the movement pattern
+        Vector2 nextMove = movementPattern[currentPattern];
+        yield return character.Move(nextMove);
+
+        // Update the current movement pattern index
         if(transform.position != oldPosition)
             currentPattern = (currentPattern + 1) % movementPattern.Count;
 
         state = NPCState.Idle;
     }
+
 }

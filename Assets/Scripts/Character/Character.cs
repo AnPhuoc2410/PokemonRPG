@@ -20,11 +20,18 @@ public class Character : MonoBehaviour
 
     public IEnumerator Move(Vector2 moveVector, Action OnMoveOver = null)
     {
+        // Snap to the grid before starting movement
+        transform.position = new Vector3(
+            Mathf.Round(transform.position.x),
+            Mathf.Round(transform.position.y),
+            transform.position.z
+        );
+
         animator.MoveX = Mathf.Clamp(moveVector.x, -1f, 1f);
         animator.MoveY = Mathf.Clamp(moveVector.y, -1f, 1f);
 
-        var targetPos = transform.position + new Vector3(moveVector.x, moveVector.y);
-
+        // Calculate target position, aligned with the grid
+        Vector3 targetPos = transform.position + new Vector3(moveVector.x, moveVector.y, 0);
         if (!IsPathClear(targetPos)) yield break;
 
         IsMoving = true;
@@ -40,6 +47,7 @@ public class Character : MonoBehaviour
 
         OnMoveOver?.Invoke();
     }
+
 
     public void HandleUpdate()
     {
@@ -65,15 +73,22 @@ public class Character : MonoBehaviour
 
     public void LookTowards(Vector3 targetPos)
     {
-        var xDiff = Mathf.Floor(targetPos.x) - Mathf.Floor(transform.position.x);
-        var yDiff = Mathf.Floor(targetPos.y) - Mathf.Floor(transform.position.y);
+        var direction = (targetPos - transform.position).normalized;
 
-        if (xDiff == 0 || yDiff == 0)
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            animator.MoveX = Mathf.Clamp(xDiff, -1f, 1f);
-            animator.MoveY = Mathf.Clamp(yDiff, -1f, 1f);
+            // Move in the x direction
+            animator.MoveX = Mathf.Clamp(direction.x, -1f, 1f);
+            animator.MoveY = 0;
+        }
+        else
+        {
+            // Move in the y direction
+            animator.MoveX = 0;
+            animator.MoveY = Mathf.Clamp(direction.y, -1f, 1f);
         }
     }
+
     private bool IsWalkable(Vector3 targetPos)
     {
         if (Physics2D.OverlapCircle(targetPos, 0.1f, GameLayers.i.SolidObjectsLayer | GameLayers.i.InteractableLayer) != null)

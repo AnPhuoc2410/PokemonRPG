@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(transform.position, 0.1f, GameLayers.i.GrassLayer))
         {
-            if (UnityEngine.Random.Range(1, 101) <= 50) // 10% chance for an encounter
+            if (UnityEngine.Random.Range(1, 101) <= 10) // 10% chance for an encounter
             {
                 // Stop any movement
                 character.Animator.IsMoving = false;
