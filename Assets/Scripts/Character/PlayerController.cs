@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 input; 
 
     public event Action OnEncountered;
+    public event Action<Collider2D> OnTrainerEncountered;
 
     private Character character;
 
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
             // Check for movement input
             if (input != Vector2.zero)
             {
-                StartCoroutine(character.Move(input, CheckForEncounter));
+                StartCoroutine(character.Move(input, OnMoveOver));
 
                 // Start playing footstep sound if not already playing
                 if (!footstepSound.isPlaying)
@@ -54,9 +55,16 @@ public class PlayerController : MonoBehaviour
             Interact();
         }
     }
+    
+    private void OnMoveOver()
+    {
+        CheckForEncounter();
+        CheckIfInTrainersView();
+    }
+
     private void CheckForEncounter()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.1f, GameLayers.i.GrassLayer))
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, GameLayers.i.GrassLayer) != null)
         {
             if (UnityEngine.Random.Range(1, 101) <= 10) // 10% chance for an encounter
             {
@@ -72,6 +80,24 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void CheckIfInTrainersView()
+    {
+        var collider = Physics2D.OverlapCircle(transform.position, 0.1f, GameLayers.i.FovLayer);
+        if (collider != null)
+        {
+            // Stop any movement
+            character.Animator.IsMoving = false;
+
+            // Stop the footstep sound
+            if (footstepSound.isPlaying)
+            {
+                footstepSound.Stop();
+            }
+            OnTrainerEncountered?.Invoke(collider);
+        }
+    }
+
     private void Interact()
     {
         var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);

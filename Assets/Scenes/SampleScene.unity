@@ -1812,7 +1812,7 @@ Transform:
   m_GameObject: {fileID: 569733012}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.09, y: 0.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2734,7 +2734,7 @@ SpriteRenderer:
   m_SortingLayerID: 1422153141
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -324738465481583142, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  m_Sprite: {fileID: 8986290312035211217, guid: 4d8273240bd08394d89544970df16411, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2754,7 +2754,7 @@ Transform:
   m_GameObject: {fileID: 640952499}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.46, y: 0.6, z: 0}
+  m_LocalPosition: {x: 1.46, y: -2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2813,25 +2813,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkDownSprites:
-  - {fileID: -324738465481583142, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: 7430610752320310450, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: 6967912203722622447, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: 912497605445946193, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 8986290312035211217, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -4806218876362008635, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -5122196006198604960, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -2945119612732961169, guid: 4d8273240bd08394d89544970df16411, type: 3}
   walkUpSprites:
-  - {fileID: 1274615599082493417, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: 7224290898076316994, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: -7082038846674081195, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: -2164955352335385618, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: 3847035201308709791, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: 3767902484453233465, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -5678255877782216497, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -6678649689522144156, guid: 4d8273240bd08394d89544970df16411, type: 3}
   walkLeftSprites:
-  - {fileID: 1963655638271956382, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: -4313984328308796512, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: -8852170756065634175, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: 5548635101522334076, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: -2705800131015325184, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: 2293063877310671964, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -5263297626620400391, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -5783307030538906865, guid: 4d8273240bd08394d89544970df16411, type: 3}
   walkRightSprites:
-  - {fileID: 4984472715904258361, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: 2545128541471118269, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: -2848480667422025577, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
-  - {fileID: 1230547015370742240, guid: b3e9c05e0d6fc2442975d506191a2e8c, type: 3}
+  - {fileID: -574703570820243325, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -1369841061438985992, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: -7501061750880398264, guid: 4d8273240bd08394d89544970df16411, type: 3}
+  - {fileID: 3179500777764853469, guid: 4d8273240bd08394d89544970df16411, type: 3}
 --- !u!114 &640952506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2844,7 +2844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9500df97303cd4bae95dcde191c82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
 --- !u!61 &640952507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2883,7 +2883,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4375, y: 1.75}
+    oldSize: {x: 1.125, y: 1.5}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4113,7 +4113,7 @@ Transform:
   m_GameObject: {fileID: 1242512468}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.04, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

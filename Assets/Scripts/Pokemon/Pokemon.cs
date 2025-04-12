@@ -11,8 +11,8 @@ public class Pokemon
     public int HP { get; private set; }
     public int MaxHP { get; private set; }
     public bool isHpChanged { get; set; } = false;
-    public event System.Action OnStatusChanged;
 
+    public event System.Action OnStatusChanged;
     public List<Move> Moves { get; private set; }
     public Move CurrentMove { get; set; }
     public Dictionary<Stat, int> Stats { get; private set; }

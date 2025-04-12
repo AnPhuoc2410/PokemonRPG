@@ -1,15 +1,25 @@
 using UnityEngine;
 
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right
+}
+
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Sprite[] walkDownSprites;
     [SerializeField] private Sprite[] walkUpSprites;
     [SerializeField] private Sprite[] walkLeftSprites;
     [SerializeField] private Sprite[] walkRightSprites;
+    [SerializeField] Direction defaultDirection = Direction.Down; 
 
     public float MoveX { get; set; }
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
+    public Direction DefaultDirection => defaultDirection;
 
     private bool wasMoving;
 
@@ -31,6 +41,7 @@ public class CharacterAnimator : MonoBehaviour
         walkUpAnim = new SpriteAnimator(spriteRenderer, walkUpSprites);
         walkLeftAnim = new SpriteAnimator(spriteRenderer, walkLeftSprites);
         walkRightAnim = new SpriteAnimator(spriteRenderer, walkRightSprites);
+        SetFacingDirection(defaultDirection);
 
         currentAnim = walkDownAnim; // Default animation
     }
@@ -64,6 +75,29 @@ public class CharacterAnimator : MonoBehaviour
         wasMoving = IsMoving;
     }
 
+    public void SetFacingDirection(Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.Up:
+                MoveX = 0;
+                MoveY = 1;
+                break;
+            case Direction.Down:
+                MoveX = 0;
+                MoveY = -1;
+                break;
+            case Direction.Left:
+                MoveX = -1;
+                MoveY = 0;
+                break;
+            case Direction.Right:
+                MoveX = 1;
+                MoveY = 0;
+                break;
+        }
+    }
+
     private SpriteAnimator GetAnimatorForDirection()
     {
         // Prioritize horizontal movement over vertical for smoother transitions
@@ -75,3 +109,4 @@ public class CharacterAnimator : MonoBehaviour
         return currentAnim; // Default to the last used animation if no direction
     }
 }
+        
